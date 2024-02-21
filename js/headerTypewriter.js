@@ -18,7 +18,7 @@ function typeWriterHeader() {
 }
 
 function typeWriterParagraph() {
-  var paragraphContent = "I'm NAME — a Cognitive Science student with an interest in technology and people.";
+  var paragraphContent = "I'm Miha — a Cognitive Science student with an interest in technology and people.";
   if (paragraphIndex < paragraphContent.length) {
     document.getElementById('paragraphText').innerHTML += paragraphContent.charAt(paragraphIndex);
     var delay = paragraphContent.charAt(paragraphIndex) === ' ' ? 110 : 70;
