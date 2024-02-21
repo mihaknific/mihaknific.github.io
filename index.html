@@ -1,1 +1,292 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=La+Belle+Aurore&display=swap"
+        rel="stylesheet">
+
+    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/title-animation.css" rel="stylesheet" type="text/css" />
+    <link href="css/dot-patter-container.css" rel="stylesheet" type="text/css" />
+    <link href="css/hover-shape-container.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <nav class="navbar no-select">
+
+        <div class="navbar__left">
+            <p><a href="/">Ime Priimek</a></p>
+        </div>
+
+        <div class="navbar__right">
+            <p onclick="smoothScroll('myProjectsAnchor')">Projects</p>
+            <p onclick="smoothScroll('contactAnchor')">Contact</p>
+            
+        </div>
+
+    </nav>
+
+
+    <div id="heroAnchor" class="hero no-select">
+        <div class="hero__container-top">
+            <h1><span id="headerText"></span><span id="headerCursor" class="blink_cursor">_</span></h1>
+            <p><span id="paragraphText"></span><span id="paragraphCursor" style="display: none;">_</span></p>
+        </div>
+        <div class="hero__container-bottom">
+            <div class="hero__title">
+                <h2>Bringing
+                    <br><span class="hero__title-highlight">passion</span> to
+                    <br>people
+                </h2>
+            </div>
+            <div class="click-pull">
+                <img src="media/click-pull.svg">
+            </div>
+        </div>
+
+        <div id="matter-container" class="object-container"></div>
+    </div>
+
+    <section id="myProjectsAnchor" class="divider no-select">
+        <div class="title-animation">
+            <h2>
+                <span>M</span><span>y</span>
+                <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span>
+            </h2>
+
+        </div>
+
+    </section>
+    <section class="project__section no-select">
+        <div class="project__container">
+            <article class="project__card project__card-1" onclick="smoothScroll('project__description__section-01')">
+                <div class="dot__pattern__container">
+                    <div class="shadow-layer"></div>
+                    <div class="dot-pattern">
+                        <div class=project__card-title>
+                            <h2>CSS Backgrounds</h2>
+                        </div>
+
+                    </div>
+                    <div class="blend-layer"></div>
+                </div>
+            </article>
+            <article class="project__card project__card-2" onclick="smoothScroll('project__description__section-02')">
+                <div class="hover-shape-container">
+                    <div class="shape rounded-rectangle-2"></div>
+                    <div class="shape rounded-rectangle-5"></div>
+                    <div class="shape circle"></div>
+                    <div class="shape half-circle"></div>
+                    <div class="shape circle circle-small-1"></div>
+                    <div class="shape circle circle-small-2"></div>
+                    <div class="shape circle circle-small-3"></div>
+                    <div class="shape circle circle-small-4"></div>
+                    <div class=project__card-title>
+                        <h2>CSS Shapes</h2>
+                    </div>
+                </div>
+            </article>
+            <article class="project__card project__card-3" onclick="smoothScroll('project__description__section-03')">
+                <div class="project__card__background__image background-img-mockup">
+
+                </div>
+                <div class=project__card-title>
+                    <h2>Poems Web App</h2>
+                </div>
+            </article>
+            <article class="project__card project__card-4" onclick="smoothScroll('project__description__section-04')">
+                <div class="scramble-container">
+                    <div id="scramble" class="scramble-text"></div>
+                </div>
+                <div class=project__card-title>
+                    <h2>Text Tool</h2>
+                </div>
+            </article>
+            <article class="project__card project__card-5" onclick="smoothScroll('project__description__section-05')">
+                <div class="project__card__background__image background-img-clock">
+
+                </div>
+                <div class=project__card-title>
+                    <h2>Web Clock</h2>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="divider no-select">
+        <div class="title-animation">
+            <h2>
+                Project descriptions
+            </h2>
+
+        </div>
+
+    </section>
+
+    <section id="project__description__section-01" class="project__description__section">
+
+        <div class="project__description__section-text__container">
+            <div class="background-number">01</div>
+            <div class="front-text">
+                <h3> Explore the Art of Web Design with Our CSS Backgrounds Project </h3>
+                <p> Are you a fan of web design? Do you want to explore the power of CSS in creating stunning
+                    backgrounds? If so, you will love our CSS Backgrounds project. This online collection showcases a
+                    variety of backgrounds created using CSS. Each background is presented with its CSS code, allowing
+                    you to understand the techniques used and apply them in your own projects. The collection is
+                    designed to inspire and educate, offering a modern and interactive experience. Visit this site and
+                    dive into the world of CSS design. </p>
+                <p> What is CSS? CSS (Cascading Style Sheets) is a style sheet language used for describing the look and
+                    formatting of a document written in HTML or XML. It is a cornerstone technology of the World Wide
+                    Web, alongside HTML and JavaScript. </p>
+            </div>
+        </div>
+
+        <div class="project__description__section-img project__description__section-img__01"></div>
+
+
+    </section>
+
+    <section id="project__description__section-02" class="project__description__section">
+
+        <div class="project__description__section-text__container">
+            <div class="background-number">02</div>
+            <div class="front-text">
+                <h3> Discover the Power of CSS with Our CSS Shapes Project </h3>
+                <p> Do you want to learn how to create different shapes using CSS?</p>
+                <p> Our CSS Shapes project is an online
+                    collection of various shapes, all made using CSS. Each shape comes with its CSS code, enabling you
+                    to learn and understand how it was created. </p>
+                <p>The project is designed to be both educational and
+                    inspirational, providing a modern and interactive learning experience. Visit this site and start
+                    your journey into the world of CSS shapes. </p>
+            </div>
+        </div>
+
+        <div class="project__description__section-img project__description__section-img__02"></div>
+
+    </section>
+
+    <section id="project__description__section-03" class="project__description__section">
+
+        <div class="project__description__section-text__container">
+            <div class="background-number">03</div>
+            <div class="front-text">
+                <h3>
+                    Discover the Beauty of Poetry with Our Prešeren Poetry Project
+                </h3>
+                <p>
+                    Do you love poetry? Do you want to learn more about the works of Dr. France Prešeren, the
+                    greatest
+                    Slovenian poet? If so, you will love our Prešeren poetry project. This online site is
+                    designed as an
+                    interactive library of poems, which you can browse by alphabet or category. Each poem is
+                    stored in
+                    JSON format, which enables you to easily manipulate and customize it. The site is designed
+                    using
+                    HTML, CSS and JS, which offers a modern and responsive interface. Visit this site and dive
+                    into the
+                    world of poetry.
+                </p>
+                <p>
+                    Who Was Dr. France Prešeren?
+                    Dr. France Prešeren (1800-1849) was a Slovenian poet, lawyer, and cultural icon. He is
+                    widely
+                    regarded as the national poet of Slovenia and one of the most influential figures in the
+                    Slovenian
+                    literary history. He wrote in the Slovenian language, which was not widely recognized or
+                    used at the
+                    time. He is best known for his lyrical poems, sonnets, and ballads, which express his love,
+                    patriotism, and social criticism. He also wrote the lyrics for the Slovenian national
+                    anthem,
+                    Zdravljica (A Toast).
+                </p>
+            </div>
+        </div>
+
+        <div class="project__description__section-img project__description__section-img__03"></div>
+
+    </section>
+
+    <section id="project__description__section-04" class="project__description__section">
+
+        <div class="project__description__section-text__container">
+            <div class="background-number">04</div>
+            <div class="front-text">
+                <h3> Transform Your Text with Our Text Transformation Tool </h3>
+                <p> Need to transform your text quickly and efficiently? </p>
+                <p>Our Text Transformation Tool is here to help.
+                    This online tool allows you to manipulate your text in various ways, such as changing case,
+                    reversing text, encoding and decoding, and more. The tool is designed to be user-friendly and
+                    efficient, making text transformation a breeze. Visit this site and transform your text in no time.
+                </p>
+            </div>
+        </div>
+
+        <div class="project__description__section-img project__description__section-img__04"></div>
+
+    </section>
+
+    <section id="project__description__section-05" class="project__description__section">
+
+        <div class="project__description__section-text__container">
+            <div class="background-number">05</div>
+            <div class="front-text">
+                <h3> Keep Track of Time with Our Web Clock Online </h3>
+                <p> Want to have a stylish and accurate clock on your desktop? </p>
+                <p>Our Web Clock Online is the perfect solution. This online clock displays the current time in
+                    real-time, ensuring you never lose track of
+                    time. The clock is designed using modern web technologies, providing a sleek and responsive
+                    interface. Visit this site and always stay on time.</p>
+            </div>
+        </div>
+
+        <div class="project__description__section-img project__description__section-img__05">
+            <h3 id="time"></h3>
+        </div>
+
+    </section>
+
+
+    <section id="contactAnchor" class="divider contact-divider">
+        <div class="title-animation">
+            <h2>
+                Let's get in touch!
+            </h2>
+
+        </div>
+
+    </section>
+
+    <section class="later">
+        IN THE WORKS!
+        <ul>
+            <li><a href="/presernove-poezije/">Prešern's poetry</a></li>
+            <li><a href="/simple-text-manipulation/">Simple Text Manipulation</a></li>
+            <li><a href="/conquering-responsive-layouts/">Conquering Responsive Layouts</a></li>
+            <li><a href="/mozilla/">A biography page inspired by Mozilla</a></li>
+            <li><a href="/clock/">A clock in real time</a></li>
+            <li><a href="/CSS-shapes/">Pure CSS shapes</a></li>
+        </ul>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
+    <script src="js/objectCanvas.js"></script>
+    <script src="js/headerTypewriter.js"></script>
+    <script src="js/smoothScroll.js"></script>
+    <script src="js/titleAnimation.js"></script>
+    <script src="js/scrambleText.js"></script>
+    <script src="js/realTime.js"></script>
+
+</body>
+
+</html>

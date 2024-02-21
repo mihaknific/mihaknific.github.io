@@ -1,0 +1,49 @@
+.dot__pattern__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.dot-pattern,
+.shadow-layer,
+.blend-layer,
+.project__card-title {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    outline: 1px solid black;
+}
+
+.dot__pattern__container:hover .shadow-layer {
+    opacity: 0;
+}
+
+.shadow-layer {
+    background: radial-gradient(ellipse at 40% 80%, #000 0%, #787c79 50%, #fff 90%);
+    transition: opacity 0.5s linear;
+    opacity: 1;
+}
+
+.dot-pattern {
+    background-image: radial-gradient(transparent 1px, white 0);
+    background-size: 1.5em 1.5em;
+}
+
+.dot-pattern > .project__card-title{
+    color: #000;
+}
+
+.blend-layer {
+    background-color: #eee;
+    mix-blend-mode: difference;
+    transition: all 0.5s ease-out;
+    clip-path: circle(100% at 50% 50%);
+}
+
+.dot__pattern__container:hover .blend-layer {
+    clip-path: circle(20% at 30% 70%);
+}
+
