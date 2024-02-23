@@ -3,7 +3,6 @@ body {
     scroll-behavior: smooth;
 }
 
-
 .no-select {
     -webkit-user-select: none;
     /* Safari */
@@ -197,7 +196,6 @@ body {
     min-height: 100vh;
 }
 
-
 .project__container {
     position: relative;
     width: min(1150px, 100% - 2em);
@@ -229,6 +227,9 @@ body {
     border-radius: 25px;
     position: relative;
     color: #fff;
+    transition: transform 2s, opacity 2s;
+    transform: translateY(50%);
+    opacity: 0;
 }
 
 .project__card:hover {
@@ -322,14 +323,73 @@ body {
     }
 }
 
+@keyframes pulseShake {
+
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1);
+        transform-origin: 50% 100%;
+    }
+
+    10% {
+        transform: rotate(2deg) scale(1);
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: rotate(-4deg) scale(1);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: rotate(4deg) scale(1);
+    }
+
+    80% {
+        transform: rotate(-2deg) scale(1);
+    }
+
+    90% {
+        transform: rotate(2deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(0deg) scale(1.1);
+    }
+}
+
+.project__description-title-animation {
+    position: relative;
+    cursor: pointer;
+}
+
+
+.project__description-title-animation h2::before {
+    content: "hover over";
+    position: absolute;
+    top: -0.6rem;
+    right: 0;
+    font-size: 1.2rem;
+    font-family: 'La Belle Aurore', cursive;
+    color: #999999;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+
+
+.project__description-title-animation:hover {
+    animation: pulseShake 2s infinite;
+}
+
 .project__description__section {
     width: 100%;
     min-height: 100vh;
     background-color: black;
     display: grid;
     grid-template-columns: 60% 40%;
-
-
 }
 
 .project__description__section-text__container {
@@ -337,7 +397,9 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(10, 1fr);
-
+    transition: transform 2s, opacity 2s;
+    transform: translateX(-100%);
+    opacity: 0;
 
     .background-number {
         position: absolute;
@@ -356,14 +418,16 @@ body {
         color: white;
         z-index: 2;
 
-        h3{
-            font-size: clamp(2rem, 5vw, 4rem);;
+        h3 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            ;
             font-weight: 600;
             padding: 1em 0;
         }
 
-        p{
-            font-size: clamp(1rem, 1vw, 2rem);;
+        p {
+            font-size: clamp(1rem, 1vw, 2rem);
+            ;
             font-weight: 200;
             padding: 1em 0;
         }
@@ -378,7 +442,10 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    transition: transform 0.5s ease;
+    transition: transform 2s, opacity 2s;
+    transform: scale(0.5);
+    transform-origin: 100% 50%;
+    opacity: 0;
 }
 
 
@@ -417,11 +484,15 @@ body {
     }
 }
 
-.contact-divider{
+.contact-divider {
     padding: 0 0 10%;
 }
 
-
+.contact-divider-title{
+    transition: transform 2s, opacity 2s;
+    transform: scale(0.1) translateY(-800%);
+    opacity: 0;
+}
 
 @media only screen and (max-width: 550px) {
     .hero .hero__container-top {
