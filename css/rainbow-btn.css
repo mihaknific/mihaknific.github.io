@@ -1,0 +1,78 @@
+:root {
+  --circle-size: clamp(15rem, 25vw, 25rem);
+}
+
+.project__description__section-text__container a {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  grid-area: 9 / 1 / 11 / 2;
+  place-self: center;
+}
+
+.rainbow-btn {
+  background-color: black;
+  border: 2px solid #777;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  width: calc(var(--circle-size) / 2);
+  height: calc(var(--circle-size) / 5);
+  transition:  1.5s;
+
+}
+
+.rainbow-circle {
+  position: absolute;
+  bottom: calc(-1 * (var(--circle-size) / 2));
+  left: calc(50% - (var(--circle-size) / 2));
+  border-radius: 50%;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s, transform 1.5s;
+}
+
+.rainbow-circle:nth-child(1) {
+  background: #DB4437;
+  z-index: 1;
+}
+
+.rainbow-circle:nth-child(2) {
+  background: #F4B400;
+  transition-delay: 200ms;
+  z-index: 2;
+}
+
+.rainbow-circle:nth-child(3) {
+  background: #0F9D58;
+  transition-delay: 400ms;
+  z-index: 3;
+}
+
+.rainbow-btn:hover {
+  border: 2px solid transparent;
+}
+
+.rainbow-btn:hover .rainbow-circle {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.rainbow-btn:not(:hover) .rainbow-circle {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s, transform 1.5s;
+}
+
+.visit-text {
+  position: relative;
+  z-index: 4;
+  color: white;
+  font-size: calc(var(--circle-size) / 10);
+  font-weight: 600;
+}
