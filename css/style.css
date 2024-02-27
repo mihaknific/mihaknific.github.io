@@ -492,6 +492,7 @@ body {
     transition: transform 2s, opacity 2s;
     transform: scale(0.1) translateY(-800%);
     opacity: 0;
+    text-align: center;
 }
 
 @media only screen and (max-width: 550px) {
