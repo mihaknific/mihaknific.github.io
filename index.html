@@ -311,12 +311,41 @@
             <h2>
                 Let's get in touch!
             </h2>
+        </div>
+
+        <div class="form-container">
+            <form id="form" class="form">
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    <label>Full name:
+                        <input type="text" placeholder="Sherlock Holmes" id="name" required maxlength="50" />
+                    </label>
+                    <label>Your e-mail:
+                        <input type="email" placeholder="Sherlock@misteryemail.com" id="email" required
+                            maxlength="50" />
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Message</legend>
+                    <label>Write your message to me below:
+                        <textarea placeholder="Hi, I'm writing ..." id="message" required></textarea>
+                    </label>
+                </fieldset>
+                <span id="form-success" class="success"></span>
+                <button class="rainbow-btn form-button" type="submit">
+                    <span class="rainbow-circle"></span>
+                    <span class="rainbow-circle"></span>
+                    <span class="rainbow-circle"></span>
+                    <p class="visit-text">Submit</p>
+                </button>
+                
+            </form>
 
         </div>
     </section>
 
     <section id="contactSection" class="later">
-        
+
     </section>
 
 
@@ -329,6 +358,7 @@
     <script src="js/slideIn.js"></script>
     <script src="js/scrambleText.js"></script>
     <script src="js/realTime.js"></script>
+    <script src="js/contactForm.js"></script>
 
 </body>
 

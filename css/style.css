@@ -1,3 +1,7 @@
+:root {
+    color-scheme: dark;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
@@ -45,9 +49,6 @@ body {
             /* no underline */
         }
     }
-
-
-
 }
 
 
@@ -488,12 +489,77 @@ body {
     padding: 10% 0;
 }
 
-.contact-divider-title{
+.contact-divider-title {
     transition: transform 2s, opacity 2s;
     transform: scale(0.1) translateY(-800%);
     opacity: 0;
     text-align: center;
+    margin: 1em 0;
 }
+
+.form-container {
+    background-color: black;
+}
+
+.form {
+    display: grid;
+}
+
+fieldset {
+    border: 1px solid #2b2b2b;
+    border-radius: 0.25em;
+    padding: 0;
+    margin-top: 0.5em;
+}
+
+legend,
+label {
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    color: white;
+}
+
+label {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    display: grid;
+    margin: 1em;
+}
+
+input,
+textarea {
+    margin: 1em 0.5em 0;
+    padding: 1em;
+    border: 1px solid #2b2b2b;
+    border-radius: 0.5em;
+    resize: vertical;
+    background-color: #0c0c0c;
+    color: #a1a1a1;
+    box-shadow: 0px 0px 3px #111;
+    font-size: 1rem;
+    font-family: monospace;
+    outline: 1px solid black;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #222 inset;
+    -webkit-text-fill-color: #a2a2a2;
+}
+
+.success {
+    color: #ff3e00;
+    background-image: -webkit-linear-gradient(0deg, #DB4437 0%, #F4B400 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    text-align: center;
+    margin-top: 1em;
+}
+
+.form-button {
+    place-self: center;
+    margin: 0.5em;
+}
+
 
 @media only screen and (max-width: 550px) {
     .hero .hero__container-top {
@@ -511,8 +577,8 @@ body {
 
     .object-container {
         top: 30%;
-        bottom: 10%;
-        height: 60%;
+        bottom: 20%;
+        height: 50%;
     }
 
     .project__container::before {
