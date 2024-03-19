@@ -264,7 +264,7 @@ body {
 }
 
 .background-img-mockup {
-    background-image: url(../media/phone-mockup1.png);
+    background-image: url(../media/mockup/presern0-r.jpg);
 }
 
 .project__card-3:hover .project__card__background__image {
@@ -303,7 +303,7 @@ body {
 }
 
 .background-img-clock {
-    background-image: url(../media/clock-img.png);
+    background-image: url(../media/clock-img-r.png);
 }
 
 .project__card-5:hover .project__card__background__image {
@@ -449,24 +449,22 @@ body {
     opacity: 0;
 }
 
-
 .project__description__section-img__01 {
     background: radial-gradient(circle, transparent 20%, black 20%, black 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, black 20%, black 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#333 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #333 2px, black 2px) -1px 0;
     background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
 }
 
-
 .project__description__section-img__02 {
-    background-image: url(../media/mockup/shapes1.png);
+    background-image: url(../media/mockup/shapes1-r.png);
 }
 
 .project__description__section-img__03 {
-    background-image: url(../media/mockup/presern0.jpg);
+    background-image: url(../media/mockup/phone-mockup1-r.png);
 }
 
 
 .project__description__section-img__04 {
-    background-image: url(../media/mockup/text-transform.png);
+    background-image: url(../media/mockup/text-transform-r.png);
 }
 
 
@@ -517,7 +515,7 @@ body {
     background-size: contain;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%);
     z-index: -1;
 
 }
