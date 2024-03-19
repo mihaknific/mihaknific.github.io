@@ -640,13 +640,14 @@ input:-webkit-autofill {
 @media (max-width: 900px) {
     .project__container {
         grid-template-columns: repeat(2, minmax(100px, 300px));
-        grid-template-rows: repeat(5, minmax(100px, 400px));
+        grid-template-rows: repeat(6, minmax(100px, 400px));
         grid-template-areas:
             "project__card-1 project__card-1"
             "project__card-2 project__card-2"
             "project__card-3 project__card-3"
             "project__card-4 project__card-4"
-            "project__card-5 project__card-5";
+            "project__card-5 project__card-5"
+            "project__card-6 project__card-6";
     }
 
     .project__description__section {
