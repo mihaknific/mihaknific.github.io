@@ -584,6 +584,10 @@ input:-webkit-autofill {
 
 
 @media only screen and (max-width: 550px) {
+    .navbar {
+        padding: 0 1em;
+    }
+    
     .hero .hero__container-top {
         height: 50%;
     }
