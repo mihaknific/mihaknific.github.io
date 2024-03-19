@@ -165,17 +165,12 @@ body {
         & img {
             width: 70%;
         }
-
     }
-
 }
 
 .object-container {
     position: absolute;
-    top: 0%;
-    bottom: 0%;
-    left: 0%;
-    right: 0%;
+    inset: 0;
 }
 
 .divider {
@@ -204,12 +199,13 @@ body {
     display: grid;
     place-content: center;
     grid-template-columns: repeat(5, minmax(100px, 200px));
-    grid-template-rows: repeat(3, minmax(200px, 350px));
+    grid-template-rows: repeat(4, minmax(200px, 350px));
     gap: 30px 30px;
     grid-template-areas:
         "project__card-1 project__card-1 project__card-2 project__card-2 project__card-2"
         "project__card-3 project__card-3 project__card-3 project__card-4 project__card-4"
-        "project__card-3 project__card-3 project__card-3 project__card-5 project__card-5";
+        "project__card-3 project__card-3 project__card-3 project__card-5 project__card-5"
+        "project__card-0 project__card-0 project__card-6 project__card-6 project__card-6";
 }
 
 .project__container::before {
@@ -309,6 +305,31 @@ body {
 .project__card-5:hover .project__card__background__image {
     transform: scale(1.1);
 }
+
+.project__card-6 {
+    grid-area: project__card-6;
+    overflow: hidden;
+    color: #eee;
+}
+
+.project__card__background__image {
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.background-img-mockup-06 {
+    background-image: url(../media/mockup/text-game-r.png);
+}
+
+.project__card-6:hover .project__card__background__image {
+    transform: scale(1.1);
+}
+
 
 .project__card-title {
     position: relative;
@@ -483,6 +504,10 @@ body {
     }
 }
 
+.project__description__section-img__06 {
+    background-image: url(../media/mockup/text-game-r.png);
+}
+
 .contact-divider {
     padding: 10% 0;
     overflow: hidden;
@@ -508,8 +533,8 @@ body {
 .form-container::before {
     content: "";
     position: absolute;
-    width: 100vw;
-    height: 100vw;
+    width: 80vw;
+    height: 80vw;
     background-image: url(../media/contact-mail.svg);
     background-repeat: no-repeat;
     background-size: contain;
@@ -583,9 +608,9 @@ input:-webkit-autofill {
 
 @media (max-width: 550px) {
     .navbar {
-        padding: 0 1em;
+        padding: 0 2em;
     }
-    
+
     .hero .hero__container-top {
         height: 50%;
     }
@@ -606,9 +631,10 @@ input:-webkit-autofill {
     .divider {
         padding: 40% 0;
     }
+
     .project__description-title-animation h2::before {
         top: 1rem;
-        }
+    }
 }
 
 @media (max-width: 900px) {
