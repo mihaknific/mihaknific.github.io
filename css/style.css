@@ -171,6 +171,7 @@ body {
 .object-container {
     position: absolute;
     inset: 0;
+    overflow: hidden;
 }
 
 .divider {
@@ -385,13 +386,13 @@ body {
 .project__description-title-animation {
     position: relative;
     cursor: pointer;
+    text-align: center;
 }
-
 
 .project__description-title-animation h2::before {
     content: "hover over!";
     position: absolute;
-    top: -0.6rem;
+    top: -0.8rem;
     right: 0;
     font-size: 1.2rem;
     font-family: 'La Belle Aurore', cursive;
@@ -399,8 +400,6 @@ body {
     letter-spacing: 3px;
     font-weight: bold;
 }
-
-
 
 .project__description-title-animation:hover {
     animation: pulseShake 2s infinite;
@@ -605,7 +604,6 @@ input:-webkit-autofill {
     margin: 0.5em;
 }
 
-
 @media (max-width: 550px) {
     .navbar {
         padding: 0 2em;
@@ -624,30 +622,27 @@ input:-webkit-autofill {
 
     }
 
-    .project__container::before {
-        content: 'click!';
+    .project__description-title-animation h2::before {
+        font-size: 1rem;
     }
 
     .divider {
         padding: 40% 0;
     }
 
-    .project__description-title-animation h2::before {
-        top: 1rem;
-    }
 }
 
 @media (max-width: 900px) {
     .project__container {
-        grid-template-columns: repeat(2, minmax(100px, 300px));
+        grid-template-columns: repeat(1, minmax(100px, 600px));
         grid-template-rows: repeat(6, minmax(100px, 400px));
         grid-template-areas:
-            "project__card-1 project__card-1"
-            "project__card-2 project__card-2"
-            "project__card-3 project__card-3"
-            "project__card-4 project__card-4"
-            "project__card-5 project__card-5"
-            "project__card-6 project__card-6";
+            "project__card-1"
+            "project__card-2"
+            "project__card-3"
+            "project__card-4"
+            "project__card-5"
+            "project__card-6";
     }
 
     .project__description__section {
@@ -667,10 +662,10 @@ input:-webkit-autofill {
     }
 
     .project__container::before {
-        content: 'press & hold!';
+        content: 'click & hold!';
     }
 
     .project__description-title-animation h2::before {
-        content: 'press on!';
+        content: 'click!';
     }
 }

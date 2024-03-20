@@ -234,3 +234,11 @@
     transform: scale(1);
   }
 }
+
+@media (max-width: 550px) {
+  .title-animation h2::before{
+    top: -1rem;
+    font-size: 1rem;
+  }
+
+}
