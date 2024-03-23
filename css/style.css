@@ -553,7 +553,7 @@ fieldset {
     border-radius: 0.25em;
     padding: 0;
     margin-top: 0.5em;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 legend,
@@ -655,6 +655,13 @@ input:-webkit-autofill {
 }
 
 @media (hover: none) and (pointer: coarse) {
+    .hero .hero__container-bottom {
+        .hero__title{
+            display: none;
+        }
+
+    }
+    
     .object-container {
         height: 70%;
     }
@@ -666,11 +673,6 @@ input:-webkit-autofill {
     .project__description-title-animation h2::before {
         content: 'click!';
     }
-    
-    .hero .hero__container-bottom {
-        .hero__title{
-            display: none;
-        }
 
-    }
+    
 }
