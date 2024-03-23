@@ -614,11 +614,9 @@ input:-webkit-autofill {
     }
 
     .hero .hero__container-bottom {
-        height: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-align: center;
+        .hero__title{
+            display: none;
+        }
 
     }
 
@@ -667,5 +665,12 @@ input:-webkit-autofill {
 
     .project__description-title-animation h2::before {
         content: 'click!';
+    }
+    
+    .hero .hero__container-bottom {
+        .hero__title{
+            display: none;
+        }
+
     }
 }
