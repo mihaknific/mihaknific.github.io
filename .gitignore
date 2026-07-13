@@ -1,0 +1,12 @@
+# Local scratch & personal notes
+scratch/
+naovidla..txt
+navodila*.txt
+*.tmp
+*.log
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

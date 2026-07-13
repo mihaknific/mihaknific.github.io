@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Miha Knific</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <meta name="description" content="Miha Knific, magister kognitivne znanosti.">
+
+    <meta name="author" content="Miha Knific">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mihaknific.github.io/">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Preload pisave -->
+    <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/images/herobg-hd.webp" as="image" type="image/webp">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Miha Knific",
+          "url": "https://mihaknific.github.io/",
+          "inLanguage": ["sl-SI"]
+        },
+        {
+          "@type": "Person",
+          "name": "Miha Knific",
+          "url": "https://mihaknific.github.io/",
+          "image": "https://mihaknific.github.io/assets/images/herobg-hd.webp", "jobTitle": "Magister kognitivne znanosti / MSc of Cognitive Science",
+          "sameAs": [
+            "https://linkedin.com/in/mihaknific", "https://github.com/mihaknific"
+          ],
+          "knowsAbout": ["Kognitivna znanost", "Cognitive Science"],
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "University of Ljubljana", "url": "https://www.uni-lj.si/programi/kognitivna-znanost"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <meta property="og:title" content="Miha Knific">
+    <meta property="og:description" content="Miha Knific, magister kognitivne znanosti.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mihaknific.github.io/">
+    <meta property="og:image" content="https://mihaknific.github.io/media/social-preview.jpg">
+    <meta property="og:site_name" content="Miha Knific">
+    <meta property="og:locale" content="sl_SI">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Miha Knific">
+    <meta name="twitter:description" content="Miha Knific, magister kognitivne znanosti.">
+    <meta name="twitter:image" content="https://mihaknific.github.io/media/social-preview.jpg">
+
+    <link rel="stylesheet" href="assets/css/style.css?v=8">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1a1a">
+
+    <!-- GSAP Libraries (Lokalno) -->
+    <script src="assets/js/gsap.min.js" defer></script>
+    <script src="assets/js/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/console__easter-egg.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- Navigacijske Pikice -->
+    <nav class="nav-dots" aria-label="Glavna navigacija">
+        <a href="#hero" data-label="Domov" class="active" aria-label="Pojdi na domačo sekcijo"></a>
+        <a href="#projects" data-label="Dela" aria-label="Pojdi na sekcijo projektov"></a>
+        <a href="#philosophy" data-label="Pristop" aria-label="Pojdi na sekcijo o pristopu"></a>
+        <a href="#contact" data-label="Kontakt" aria-label="Pojdi na kontaktno sekcijo"></a>
+    </nav>
+
+    <!-- Scroll container -->
+    <main class="snap-container">
+
+        <!-- 1. HERO -->
+        <section id="hero" class="hero-section">
+            <div class="hero-background-visual" role="img" aria-label="Ozadnja slika portfolia"></div>
+            <div class="hero-light-sweep" aria-hidden="true"></div>
+            <header class="header-position hero-header">
+                <h1 class="magnetic-text">MIHA<br>KNIFIC</h1>
+                <h2 class="magnetic-text">MAGISTER KOGNITIVNE ZNANOSTI</h2>
+            </header>
+            <div class="hero__suggest">
+                <div class="hero__suggest-outer">
+                    <div class="hero__suggest-inner"></div>
+                </div>
+                <div class="hero__suggest-text">Scroll</div>
+            </div>
+        </section>
+
+        <!-- 2. PROJEKTI (Asimetrični Bento Grid) -->
+        <section id="projects" class="projects-section">
+            <div class="projects-page-header unified-header">
+                <span class="page-sec-num">02</span>
+                <span class="page-sec-title">IZBRANA DELA</span>
+            </div>
+
+            <div class="grid-container">
+
+                <!-- 1. E-bralnik (Glavni Hero 2:3 levo — 4 st × 4 vr) -->
+                <a href="https://mihaknific.github.io/spletni-bralnik/" class="card card-epub"
+                    aria-label="E-bralnik — prilagodljiv bralnik e-knjig">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">APLIKACIJA</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>E-KNJIGE</div>
+                        </div>
+                        <div>
+                            <h3>E-bralnik</h3>
+                            <p>Prilagodljiv bralnik za ePub in PDF<span class="card-text-extra"> z glasovnim branjem
+                                    (TTS) in prilagoditvijo tipografije</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2. Besedomat (Drugi največji Hero 4:3 v sredini — 4 st × 3 vr) -->
+                <a href="https://mihaknific.github.io/besedomat/" class="card card-besedomat"
+                    aria-label="Besedomat — orodje za urejanje besedil">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">ORODJE</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>BESEDILO</div>
+                        </div>
+                        <div>
+                            <h3>Besedomat</h3>
+                            <p>Vsestransko orodje za urejanje besedil<span class="card-text-extra">, analizo in čiščenje
+                                    z več kot 50 funkcijami</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3. Računkomat (3:2 landscape desno zgoraj — 4 st × 2 vr) -->
+                <a href="https://mihaknific.github.io/racunkomat/" class="card card-racunkomat"
+                    aria-label="Računkomat — orodje za izdajanje računov">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">APLIKACIJA</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>POSLOVANJE</div>
+                        </div>
+                        <div>
+                            <h3>Računkomat</h3>
+                            <p>Lokalno izdajanje računov<span class="card-text-extra">, brez spleta in naročnin</span>.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 4. UPN Generator (Prostorna kartica v sredini — 2 st × 3 vr) -->
+                <a href="https://mihaknific.github.io/upn-generator/" class="card card-upn"
+                    aria-label="Generator plačilnih nalogov UPN">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">ORODJE</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>OBRAZCI</div>
+                        </div>
+                        <div>
+                            <h3>UPN Generator</h3>
+                            <p>Plačilni nalog s QR kodo<span class="card-text-extra">, pripravljen za tisk</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 5. Miselni izzivi (3:2 landscape desno v sredini — 4 st × 2 vr) -->
+                <a href="https://mihaknific.github.io/miselni-izzivi/" class="card card-miselni"
+                    aria-label="Miselni izzivi — 15 kognitivnih testov in iger">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">TRENING</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>KOGNICIJA</div>
+                        </div>
+                        <div>
+                            <h3>Miselni izzivi</h3>
+                            <p>15 interaktivnih testov in iger<span class="card-text-extra"> za urjenje spomina in
+                                    pozornosti</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 6. Odprta Znanost (1:1 kvadrat levo spodaj — 2 st × 2 vr) -->
+                <a href="https://mihaknific.github.io/odprta-znanost/" class="card card-odprto"
+                    aria-label="Odprta Znanost — sodobno učenje in simulacije">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">PLATFORMA</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>UČENJE</div>
+                        </div>
+                        <div>
+                            <h3>Odprta Znanost</h3>
+                            <p>Odprta znanost in učenje<span class="card-text-extra"> z interaktivnimi učnimi načrti,
+                                    simulacijami in viri</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 7. PRIPOVEDI / interaktivne zgodbe (3×2 večji landscape spodaj) -->
+                <a href="https://mihaknific.github.io/pripovedi/" class="card card-igra"
+                    aria-label="PRIPOVEDI — interaktivne tekstovne zgodbe">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">IGRA</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>ZGODBE</div>
+                        </div>
+                        <div>
+                            <h3>PRIPOVEDI</h3>
+                            <p>Interaktivne tekstovne zgodbe<span class="card-text-extra"> z razvejanimi odločitvami in
+                                    atmosfero</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 8. Bralnik klasikov (2×2 manjši kvadrat spodaj) -->
+                <a href="https://mihaknific.github.io/slovenska-knjizevnost/" class="card card-klasiki"
+                    aria-label="Bralnik klasikov — slovenska književnost">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">ZBIRKA</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>LITERATURA</div>
+                        </div>
+                        <div>
+                            <h3>Bralnik klasikov</h3>
+                            <p>Dela slovenskih avtorjev<span class="card-text-extra"> s prilagodljivim prikazom</span>.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 9. Atlas medijev (3×2 landscape desno v sredini) -->
+                <a href="https://mihaknific.github.io/medijski-atlas/" class="card card-mediji"
+                    aria-label="Atlas medijev — pregled in analiza slovenskega medijskega prostora">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">ANALITIKA</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>MEDIJISKI PROSTOR</div>
+                        </div>
+                        <div>
+                            <h3>Atlas medijev</h3>
+                            <p>Pregled slovenskih medijev<span class="card-text-extra"> z analizo virov in
+                                    lastništva</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 10. Več projektov (5×1 širok poudarjen trak desno spodaj) -->
+                <a href="arhiv.html" class="card card-arhiv more-projects-card"
+                    aria-label="Povezava na celoten arhiv projektov">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">ZBIRKA</div>
+                            <div class="card-badge badge-active"><span class="badge-dot"></span>VSI PROJEKTI</div>
+                        </div>
+                        <div>
+                            <h3 class="more-projects-title">Vsi projekti <span class="arrow-icon">↗</span></h3>
+                            <p>Preglej celotno zbirko orodij, aplikacij in eksperimentov v arhivu.</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- 3. FILOZOFIJA & PRISTOP (Editorial) -->
+        <section id="philosophy" class="philosophy-section">
+            <div class="philosophy-header unified-header">
+                <span class="page-sec-num">03</span>
+                <span class="page-sec-title">FILOZOFIJA</span>
+            </div>
+
+            <div class="editorial-layout">
+
+                <!-- Dvostolpčni editorial (Koncept 2: Swiss Style) -->
+                <div class="editorial-columns">
+
+                    <!-- Levi stolpec: Pristop -->
+                    <div class="editorial-col editorial-col-main">
+                        <h3 class="editorial-quote">
+                            Pristop.
+                        </h3>
+
+                        <div class="editorial-intro">
+                            <p>Snovanje digitalnih produktov razumem kot iskanje preprostih rešitev za vsakdanje
+                                izzive.<span class="text-desktop"> Vsak projekt se je začel kot neposreden odgovor na
+                                    konkretno
+                                    težavo pri delu ali študiju.</span><span class="text-medium"> Ključno vodilo pri tem
+                                    je, da orodje deluje
+                                    zanesljivo in uporabnika brez ovir vodi do cilja<span class="text-desktop">, pri
+                                        čemer
+                                        se tehnična dovršenost naravno preplete s čistim, preglednim
+                                        oblikovanjem</span>.</span></p>
+                            <p class="text-desktop">Poseben poudarek namenjam orodjem, ki delujejo lokalno v brskalniku
+                                – brez nepotrebnih naročnin, obdelave na oddaljenih strežnikih ali posegov v zasebnost
+                                uporabnika.</p>
+                        </div>
+                    </div>
+
+                    <!-- Desni stolpec: 4 numerirani sklopi s švicarskimi značkami -->
+                    <div class="editorial-col editorial-col-list">
+
+                        <div class="swiss-item">
+                            <span class="swiss-num">01</span>
+                            <div class="swiss-content">
+                                <div class="swiss-header-row">
+                                    <h4>Računkomat & UPN</h4>
+                                    <span class="swiss-tag">100 % LOKALNO</span>
+                                </div>
+                                <p><span class="text-desktop">Ko sem prijateljem pomagal pri odpiranju s.p.-ja in
+                                        izdajanju
+                                        računov, sem opazil, da za občasno pripravo računov in položnic ni preprostih,
+                                        brezplačnih ter zasebnih orodij. </span>
+                                    Računkomat in UPN delujeta 100 % lokalno v brskalniku — brez
+                                    naročnin, strežnikov in pošiljanja podatkov.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiss-item">
+                            <span class="swiss-num">02</span>
+                            <div class="swiss-content">
+                                <div class="swiss-header-row">
+                                    <h4>Besedomat</h4>
+                                    <span class="swiss-tag">50+ ORODIJ</span>
+                                </div>
+                                <p><span class="text-desktop">Med pisanjem magistrskega dela me je nenehno motilo
+                                        trganje vrstic pri kopiranju iz večstolpčnih PDF-jev. Začel sem z drobno skripto
+                                        za popravilo prelomov, ki je zrasla v </span>Besedomat z več kot 50 orodji za
+                                    čiščenje, urejanje in analizo besedila.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiss-item">
+                            <span class="swiss-num">03</span>
+                            <div class="swiss-content">
+                                <div class="swiss-header-row">
+                                    <h4>E-bralnik</h4>
+                                    <span class="swiss-tag">OFFLINE & TTS</span>
+                                </div>
+                                <p><span class="text-desktop">Kot nevesten, a strasten bralec, sem želel lahko in
+                                        prilagodljivo
+                                        bralno okolje brez zaprtih formatov. E-bralnik omogoča </span>prilagoditev
+                                    tipografije, prikaza teksta, hitro branje (RSVP) ter poslušanje besedila s sintezo
+                                    govora (TTS).</p>
+                            </div>
+                        </div>
+
+                        <div class="swiss-item">
+                            <span class="swiss-num">04</span>
+                            <div class="swiss-content">
+                                <div class="swiss-header-row">
+                                    <h4>V nastajanju</h4>
+                                    <span class="swiss-tag">V RAZVOJU</span>
+                                </div>
+                                <p>Trenutno razvijam platformo za statistično analizo in vizualizacijo slovenskega
+                                    medijskega prostora<span class="text-desktop"> (lastništvo in zanesljivost
+                                        novic)</span> ter odprto okolje za interaktivno učenje<span
+                                        class="text-desktop"> z intuitivnimi vizualnimi simulacijami</span>.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Tehnologije -->
+                <div class="editorial-tech-bar">
+                    <span class="tech-bar-label">TEHNOLOGIJE //</span>
+                    <span>HTML</span><span class="tech-sep">·</span><span>CSS</span><span
+                        class="tech-sep">·</span><span>JavaScript</span><span
+                        class="tech-sep">·</span><span>TypeScript</span><span
+                        class="tech-sep">·</span><span>React</span><span
+                        class="tech-sep">·</span><span>Next.js</span><span
+                        class="tech-sep">·</span><span>Node.js</span><span
+                        class="tech-sep">·</span><span>Python</span><span class="tech-sep">·</span><span>SQL</span><span
+                        class="tech-sep">·</span><span>GSAP</span><span class="tech-sep">·</span><span>Web
+                        APIs</span><span class="tech-sep">·</span><span>Git</span><span
+                        class="tech-sep">·</span><span>Figma</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. KONTAKT -->
+        <section id="contact" class="contact-section">
+            <canvas id="contact-canvas" aria-hidden="true"></canvas>
+            <div class="contact-page-header unified-header">
+                <span class="page-sec-num">04</span>
+                <span class="page-sec-title">SODELOVANJE</span>
+            </div>
+            <div class="contact-container">
+
+                <div class="email-hero">
+                    <div class="email-row">
+                        <button class="email-text interactive" id="email-text" type="button"
+                            aria-label="Kopiraj e-poštni naslov">miha.devstudio@gmail.com</button>
+                        <button id="copy-email-btn" aria-label="Kopiraj">
+                            <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                            </svg>
+                            <svg class="icon-check hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M20 6 9 17l-5-5" />
+                            </svg>
+                            <span class="btn-text"></span>
+                        </button>
+                    </div>
+                    <span id="copy-tooltip">USPEŠNO KOPIRANO</span>
+                </div>
+
+                <div class="social-minimal">
+                    <a href="https://linkedin.com/in/mihaknific" target="_blank" rel="noopener noreferrer"
+                        class="sm-link">LINKEDIN</a>
+                    <span class="sm-divider">/</span>
+                    <a href="https://github.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                        class="sm-link">GITHUB</a>
+                </div>
+
+                <div class="support-section">
+                    <p class="support-label">PODPRI MOJE DELO</p>
+                    <div class="support-buttons">
+                        <a href="https://buymeacoffee.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                            class="support-btn support-btn-coffee" aria-label="Časti kavo na Buy Me a Coffee">
+                            <span class="btn-content">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 39" fill="currentColor"
+                                    style="height:1.1em; width:auto; transform: translateY(-1px);" aria-hidden="true">
+                                    <path
+                                        d="M14.3206 17.9122C12.9282 18.5083 11.3481 19.1842 9.30013 19.1842C8.44341 19.1824 7.59085 19.0649 6.76562 18.8347L8.18203 33.3768C8.23216 33.9847 8.50906 34.5514 8.95772 34.9645C9.40638 35.3776 9.994 35.6069 10.6039 35.6068C10.6039 35.6068 12.6122 35.7111 13.2823 35.7111C14.0036 35.7111 16.1662 35.6068 16.1662 35.6068C16.776 35.6068 17.3635 35.3774 17.8121 34.9643C18.2606 34.5512 18.5374 33.9846 18.5876 33.3768L20.1046 17.3073C19.4267 17.0757 18.7425 16.9219 17.9712 16.9219C16.6372 16.9214 15.5623 17.3808 14.3206 17.9122Z">
+                                    </path>
+                                    <path
+                                        d="M26.6584 10.3609L26.4451 9.28509C26.2537 8.31979 25.8193 7.40768 24.8285 7.05879C24.5109 6.94719 24.1505 6.89922 23.907 6.66819C23.6634 6.43716 23.5915 6.07837 23.5351 5.74565C23.4308 5.13497 23.3328 4.52377 23.2259 3.91413C23.1336 3.39002 23.0606 2.80125 22.8202 2.32042C22.5073 1.6748 21.858 1.29723 21.2124 1.04743C20.8815 0.923938 20.5439 0.819467 20.2012 0.734533C18.5882 0.308987 16.8922 0.152536 15.2328 0.0633591C13.241 -0.046547 11.244 -0.0134338 9.25692 0.162444C7.77794 0.296992 6.22021 0.459701 4.81476 0.971295C4.30108 1.15851 3.77175 1.38328 3.38115 1.78015C2.90189 2.26775 2.74544 3.02184 3.09537 3.62991C3.34412 4.06172 3.7655 4.3668 4.21242 4.56862C4.79457 4.82867 5.40253 5.02654 6.02621 5.15896C7.76282 5.54279 9.56148 5.6935 11.3356 5.75765C13.302 5.83701 15.2716 5.77269 17.2286 5.56521C17.2286 5.56521 17.2286 5.56521 17.2286 5.56521Z">
+                                    </path>
+                                </svg>
+                                <span>Časti kavo</span>
+                            </span>
+                        </a>
+                        <a href="https://ko-fi.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                            class="support-btn support-btn-kofi" aria-label="Podpri me na Ko-fi">
+                            <span class="btn-content">
+                                <svg viewBox="0 0 24 24" fill="currentColor" style="height:1.1em; width:auto;"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z" />
+                                </svg>
+                                <span>Ko-fi</span>
+                            </span>
+                        </a>
+                        <a href="https://patreon.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                            class="support-btn support-btn-patreon" aria-label="Podpri me na Patreonu">
+                            <span class="btn-content">
+                                <svg viewBox="0 0 24 24" fill="currentColor" style="height:1.1em; width:auto;"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M0 .48v23.04h4.22V.48zm15.385 0c-4.764 0-8.641 3.88-8.641 8.65 0 4.755 3.877 8.636 8.641 8.636 4.75 0 8.615-3.881 8.615-8.637 0-4.77-3.865-8.649-8.615-8.649z" />
+                                </svg>
+                                <span>Patreon</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-line-separator"></div>
+            <div class="footer-refined">
+                <p>© 2026 MIHA KNIFIC</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" aria-hidden="true"></div>
+
+    <!-- Aplikacijska logika -->
+    <script src="assets/js/app.js?v=8" defer></script>
+    <script src="assets/js/interactive-grid.js" defer></script>
+    <script src="assets/js/favicon-anim.js" defer></script>
+
+</body>
+
+</html>

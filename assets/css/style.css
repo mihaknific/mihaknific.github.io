@@ -1,0 +1,2443 @@
+        /* CUBE CSS */
+        @layer reset, composition, block, utility;
+
+        /* Font */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+            src: url('../fonts/Inter-Variable.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style: italic;
+            font-weight: 100 900;
+            font-display: swap;
+            src: url('../fonts/Inter-Variable-Italic.ttf') format('truetype');
+        }
+
+        :root {
+            /* --- SHADCN BASE --- */
+
+            /* --- POVRŠINE (BACKGROUNDS) --- */
+            --background: oklch(0.14 0 0);
+            --foreground: oklch(0.99 0 0);
+
+            /* --- KARTICE (CARDS & SURFACES) --- */
+            --card: oklch(0.20 0 0);
+            --card-foreground: oklch(0.99 0 0);
+
+            /* --- PRIMARNA (BRAND COLOR) --- */
+            --primary: oklch(0.92 0 0);
+            --primary-foreground: oklch(0.20 0 0);
+
+            /* --- SEKUNDARNA (ACCENTS / MUTED) --- */
+            --secondary: oklch(0.27 0 0);
+            --secondary-foreground: oklch(0.99 0 0);
+
+            --muted: var(--secondary);
+            --muted-foreground: oklch(0.71 0 0);
+
+            /* --- UI ELEMENTI (BORDERS, INPUTS) --- */
+            --border: oklch(1.00 0 0 / 10%);
+            --input: oklch(1.00 0 0 / 15%);
+            --ring: oklch(0.56 0 0);
+
+            /* --- CUSTOM VARIABLES --- */
+
+            /* Globina (Deep variants) */
+            --background-deep: oklch(0.02 0 0);
+            --background-subtle: oklch(0.04 0 0);
+            --card-deep: oklch(0.06 0 0);
+
+            /* Besedilo (Text Styles) */
+            --text-mid: oklch(0.51 0 0);
+            --text-light: oklch(0.85 0 0);
+            --text-bento: var(--text-mid);
+            /* Alias */
+
+            /* Globalni Utility */
+            --color-black: oklch(0 0 0);
+            --color-white: oklch(1 0 0);
+
+            /* --- Tipografija (Pisave) --- */
+            --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-weight-regular: 400;
+            --line-height-normal: 1.5;
+
+        }
+
+        @layer reset {
+
+            /* Pravila za box-sizing */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            /* Prepreči povečavo pisave na mobilnih napravah */
+            html {
+                -moz-text-size-adjust: none;
+                -webkit-text-size-adjust: none;
+                text-size-adjust: none;
+                scroll-behavior: smooth;
+            }
+
+            /* Odstrani privzeti margin za boljši nadzor v CSS */
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            p,
+            figure,
+            blockquote,
+            dl,
+            dd {
+                margin: 0;
+            }
+
+            /* Odstrani privzete sloge seznamov na ul, ol elementih z vlogo list */
+            :where(ul[role='list'], ol[role='list']) {
+                list-style: none;
+                padding-inline-start: 0;
+            }
+
+            /* Privzete nastavitve za body */
+            body {
+                line-height: 1.5;
+            }
+
+            /* Krajša višina vrstic za naslove in interaktivne elemente */
+            h1,
+            h2,
+            h3,
+            h4,
+            button,
+            input,
+            label {
+                line-height: 1.1;
+            }
+
+            /* Uravnoteženo prelomljenje naslovov */
+            h1,
+            h2,
+            h3,
+            h4 {
+                text-wrap: balance;
+            }
+
+            p,
+            li,
+            figcaption {
+                max-width: 65ch;
+                text-wrap: pretty;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+
+
+            ul,
+            ol {
+                list-style: none;
+                /* Odstrani pikice pri seznamih */
+            }
+
+            /* Olajšano delo s slikami */
+            img,
+            picture,
+            video,
+            canvas,
+            svg {
+                display: block;
+                max-width: 100%;
+            }
+
+            /* Podeduj pisave za vnose in gumbe */
+            input,
+            button,
+            textarea,
+            select {
+                font-family: inherit;
+                font-size: inherit;
+            }
+
+            /* Poskrbi, da textarea brez atributa rows ni premajhna */
+            :where(textarea:not([rows])) {
+                min-height: 10em;
+            }
+
+            /* Elementi s sidrom naj imajo dodaten scroll margin */
+            :target {
+                scroll-margin-block: 5ex;
+            }
+        }
+
+        @layer composition {
+            body {
+                height: 100svh;
+                overflow: hidden;
+                /* Prepreči dvojni scrollbar, ker imamo .snap-container */
+            }
+
+            /* Grain Noise Overlay */
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+                opacity: 0.035;
+                /* Nežen zrnat učinek */
+                mix-blend-mode: overlay;
+                pointer-events: none;
+                z-index: 9999;
+            }
+
+            /* --- SCROLL CONTAINER --- */
+            .snap-container {
+                display: grid;
+                grid-template-areas: "stack";
+                height: 100dvh;
+                overflow: clip;
+                touch-action: none;
+            }
+
+            section {
+                grid-area: stack;
+                height: 100dvh;
+            }
+
+            /* --- HERO SEKCJA (notranji grid za prekrivanje background + header) --- */
+            #hero {
+                display: grid;
+                grid-template-areas: "hero-stack";
+            }
+
+            .hero-background-visual {
+                grid-area: hero-stack;
+                z-index: 1;
+                background-color: var(--background-deep);
+                background-image: url('../images/herobg-hd.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: top center;
+                filter: contrast(1.05) brightness(1.2);
+                margin: 1rem;
+                border-radius: 2.5rem;
+                will-change: transform, opacity;
+            }
+
+            .hero-light-sweep {
+                grid-area: hero-stack;
+                align-self: stretch;
+                justify-self: start;
+                width: 36vw;
+                height: 100%;
+                margin: 1rem;
+                border-radius: 2.5rem;
+                z-index: 1;
+                background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.02) 20%, rgba(255, 255, 255, 0.25) 45%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0.02) 80%, transparent 100%);
+                filter: blur(10px);
+                mix-blend-mode: screen;
+                opacity: 0;
+                pointer-events: none;
+                will-change: transform, opacity;
+            }
+
+            header {
+                grid-area: hero-stack;
+                z-index: 2;
+                padding-inline: clamp(1.5rem, 5vw, 4rem);
+                place-self: center start;
+            }
+
+            /* --- SCROLL SUGGESTION (Mouse hint) - CSS ONLY --- */
+            .hero__suggest {
+                grid-area: hero-stack;
+                z-index: 3;
+                place-self: end center;
+                margin-bottom: 2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                user-select: none;
+            }
+
+            .hero__suggest-outer {
+                position: relative;
+                height: 60px;
+                width: 30px;
+                border: 2px solid var(--color-white);
+                border-radius: 50px;
+            }
+
+            .hero__suggest-inner {
+                position: absolute;
+                top: 10px;
+                left: calc(50% - 10px);
+                background-color: var(--color-white);
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                animation: move 3s ease-in-out infinite;
+            }
+
+            .hero__suggest-text {
+                margin-top: 1rem;
+                font-family: var(--font-body);
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--color-white);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .hero__suggest-inner {
+                    animation: none;
+                }
+
+                *,
+                *::before,
+                *::after {
+                    scroll-behavior: auto !important;
+                    transition-duration: 0.01ms !important;
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                }
+            }
+
+            @keyframes move {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(20px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+
+            /* --- PROJEKTI SEKCJA --- */
+            .projects-section {
+                position: relative;
+                padding-inline: clamp(1.5rem, 5vw, 4rem);
+                padding-top: clamp(5rem, 11vh, 8rem);
+                padding-bottom: clamp(2rem, 5vh, 4rem);
+                background: var(--background-deep);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: clamp(1.5rem, 4vh, 3rem);
+            }
+
+            /* --- CONTACT SEKCJA (layout premaknjeno v @layer block) --- */
+
+        }
+
+        @layer block {
+            body {
+                color-scheme: dark;
+                background-color: var(--background);
+                /* Ohrani svojo osnovno */
+                font-family: var(--font-body);
+                font-size: 1rem;
+                font-weight: var(--font-weight-regular);
+                line-height: var(--line-height-normal);
+                touch-action: none !important;
+                /* Omogoči GSAP Observer nadzor */
+                overscroll-behavior: none;
+                /* Prepreči poteg za osvežitev */
+            }
+
+            /* HEADER STYLES */
+            header {
+                cursor: default;
+                color: var(--color-white);
+
+                & .magnetic-text {
+                    cursor: pointer;
+                }
+
+                & h1 {
+                    font-size: clamp(3rem, 6vw, 10rem);
+                    font-weight: 900;
+                    line-height: 0.8;
+                }
+
+                & h2 {
+                    font-size: clamp(0.9rem, 1.2vw, 4rem);
+                    /* Fluidni podnaslov */
+                }
+            }
+
+            /* --- NAVIGACIJSKE PIKICE --- */
+            .nav-dots {
+                position: fixed;
+                inset-inline-end: 1.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                z-index: 100;
+                align-items: center;
+                /* Center items horizontally */
+            }
+
+            /* Arrow Up Indicator */
+            .nav-dots::before {
+                content: '';
+                display: block;
+                width: 0.6rem;
+                height: 0.6rem;
+                border-top: 1px solid var(--muted-foreground);
+                border-right: 1px solid var(--muted-foreground);
+                transform: rotate(-45deg);
+                margin-bottom: 0.5rem;
+                opacity: 0.5;
+            }
+
+            /* Arrow Down Indicator */
+            .nav-dots::after {
+                content: '';
+                display: block;
+                width: 0.6rem;
+                height: 0.6rem;
+                border-bottom: 1px solid var(--muted-foreground);
+                border-right: 1px solid var(--muted-foreground);
+                transform: rotate(45deg);
+                margin-top: 0.5rem;
+                opacity: 0.5;
+            }
+
+            .nav-dots a {
+                width: 0.5rem;
+                height: 0.5rem;
+                border-radius: 50%;
+                background: oklch(1 0 0 / 0.5);
+                transition: transform 0.3s ease, background-color 0.3s ease;
+                cursor: pointer;
+                text-decoration: none;
+                position: relative;
+                will-change: transform, background-color;
+            }
+
+            .nav-dots a.active,
+            .nav-dots a:hover {
+                background: var(--color-white);
+                transform: scale(2);
+            }
+
+            a:focus-visible,
+            button:focus-visible {
+                outline: 1px solid var(--color-white);
+                outline-offset: 5px;
+            }
+
+            .card:focus-visible {
+                outline-offset: 8px;
+            }
+
+            /* Tooltip ob hoverju na pikico */
+            .nav-dots a::after {
+                content: attr(data-label);
+                position: absolute;
+                inset-inline-end: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
+                white-space: nowrap;
+                font-family: var(--font-body);
+                font-size: 0.75rem;
+                color: var(--color-white);
+                opacity: 0;
+                transition: opacity 0.2s;
+                pointer-events: none;
+                text-transform: uppercase;
+            }
+
+            .nav-dots a:hover::after {
+                opacity: 1;
+            }
+
+            /* --- PROJEKTI KARTICE (Bento Grid) --- */
+            .section-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                border-bottom: 1px solid var(--card);
+                padding-bottom: 10px;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+                text-transform: uppercase;
+                font-weight: 400;
+                color: var(--text-bento);
+                /* Priprava za reveal animacijo */
+                display: inline-block;
+                overflow: hidden;
+            }
+
+            .section-header span {
+                font-family: var(--font-body);
+                color: var(--text-mid);
+                font-size: 0.9rem;
+            }
+
+            /* Visoko-dizajnerski asimetrični Bento Grid (12 stolpcev × 6 vrstic)
+               Popolna raznolikost — nobeni dve sosednji kartici nimata enake velikosti ali oblike:
+               ┌───────────────────────┬───────────────────────────────┬───────────────┐
+               │                       │  2. BESEDOMAT (5 st × 2 vr)   │ 3. RAČUNKOMAT │
+               │  1. E-BRALNIK (HERO)  │     široka panorama zgoraj    │    (3 st      │
+               │     (4 st × 4 vr)     ├───────────────────┬───────────┤    × 3 vr)    │
+               │     velik blok levo   │ 4. UPN GENERATOR  │ 5.MISELNI │ kvadrat       │
+               │                       │    (3 st × 2 vr)  │   IZZIVI  ├───────────────┤
+               │                       │    landscape      │  (2st×3vr)│ 8. ATLAS MED. │
+               ├───────────┬───────────┴───────┬───────────┤  pokončen │    (3 st      │
+               │ 6. ODPRTO │ 7. BESEDILNA ZG.  │ 8. KLASIKI│  steber   │    × 2 vr)    │
+               │ (2st×2vr) │    (3 st × 2 vr)  │ (2st×2vr) ├───────────┴───────────────┤
+               │  kvadrat  │    večja (3×2)    │  kvadrat  │ 10. VSI PROJEKTI / ARHIV ↗│
+               │           │                   │           │    (5 st × 1 vr) trak     │
+               └───────────┴───────────────────┴───────────┴───────────────────────────┘
+            */
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows: repeat(6, 1fr);
+                gap: clamp(6px, 1vh, 12px);
+                flex: 1;
+                min-height: 0;
+                padding: 2px;
+            }
+
+            /* 1. E-bralnik (Glavni Hero — velik 4×4 blok levo) */
+            .card-epub {
+                grid-column: 1 / 5;
+                grid-row: 1 / 5;
+            }
+
+            /* 2. Besedomat (Drugi Hero — 5×2 široka panorama zgoraj) */
+            .card-besedomat {
+                grid-column: 5 / 10;
+                grid-row: 1 / 3;
+            }
+
+            /* 3. Računkomat (3×3 kvadrat zgoraj desno) */
+            .card-racunkomat {
+                grid-column: 10 / 13;
+                grid-row: 1 / 4;
+            }
+
+            /* 4. UPN Generator (3×2 landscape v sredini) */
+            .card-upn {
+                grid-column: 5 / 8;
+                grid-row: 3 / 5;
+            }
+
+            /* 5. Miselni izzivi (2×3 pokončen steber v sredini) */
+            .card-miselni {
+                grid-column: 8 / 10;
+                grid-row: 3 / 6;
+            }
+
+            /* 6. Odprto znanje (2×2 kvadrat levo spodaj) */
+            .card-odprto {
+                grid-column: 1 / 3;
+                grid-row: 5 / 7;
+            }
+
+            /* 7. Besedilna zgodba (3×2 večji landscape spodaj) */
+            .card-igra {
+                grid-column: 3 / 6;
+                grid-row: 5 / 7;
+            }
+
+            /* 8. Bralnik klasikov (2×2 manjši kvadrat spodaj) */
+            .card-klasiki {
+                grid-column: 6 / 8;
+                grid-row: 5 / 7;
+            }
+
+            /* 9. Atlas medijev (3×2 landscape desno v sredini) */
+            .card-mediji {
+                grid-column: 10 / 13;
+                grid-row: 4 / 6;
+            }
+
+            /* 10. Arhiv projektov / Več ↗ (5×1 širok poudarjen trak desno spodaj) */
+            .card-arhiv {
+                grid-column: 8 / 13;
+                grid-row: 6 / 7;
+            }
+
+            /* KARTICA - Osnovni stil z zaokroženimi robovi */
+            .card {
+                background-color: var(--card-deep);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 16px;
+                padding: clamp(0.7rem, 1.4vh, 1.15rem);
+                position: relative;
+                color: var(--primary);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                overflow: hidden;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                transform-style: preserve-3d;
+                perspective: 1000px;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                backface-visibility: hidden;
+                will-change: transform;
+
+                /* Premium Glow efekt na podlagi miške */
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08), transparent 40%);
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    z-index: 3;
+                    pointer-events: none;
+                }
+
+                /* Hover efekt na kartico */
+                &:hover {
+                    border-color: rgba(255, 255, 255, 0.8);
+                    z-index: 10;
+                    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+
+                    &::after {
+                        opacity: 1;
+                    }
+
+                    & .card-bg {
+                        transform: scale(1.05);
+                        background-blend-mode: normal;
+                        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-blend-mode 0.3s;
+                    }
+
+                    &::before {
+                        opacity: 0.95;
+                        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.92) 100%);
+                        transition: background 0.3s ease;
+                    }
+
+                    & .card-content {
+                        transform: none;
+                    }
+                }
+            }
+
+            .card-bg {
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                background-size: cover;
+                background-position: center;
+                background-blend-mode: multiply;
+                background-color: var(--card-deep);
+                transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-blend-mode 0.8s;
+                will-change: transform;
+            }
+
+            .card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.75) 60%, rgba(0, 0, 0, 0.92) 100%);
+                z-index: 1;
+                transition: opacity 0.6s ease;
+                will-change: opacity;
+            }
+
+            .card-content {
+                position: relative;
+                z-index: 2;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 0.4rem;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                pointer-events: none;
+            }
+
+            .card-meta {
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                flex-wrap: wrap;
+            }
+
+            .card-tag {
+                font-family: var(--font-body);
+                font-size: 0.62rem;
+                letter-spacing: 0.05em;
+                color: var(--muted-foreground);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 4px;
+                padding: 2px 6px;
+                width: fit-content;
+                background: rgba(0, 0, 0, 0.6);
+            }
+
+            .card-badge {
+                font-family: var(--font-body);
+                font-size: 0.62rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                padding: 2px 7px;
+                border-radius: 4px;
+                background: rgba(255, 255, 255, 0.08);
+                color: var(--color-white);
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .badge-dot {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: #10b981;
+                box-shadow: 0 0 6px #10b981;
+            }
+
+            .card h3 {
+                font-size: clamp(0.95rem, 1.15vw, 1.3rem);
+                text-transform: uppercase;
+                font-weight: 700;
+                line-height: 1.1;
+                margin-bottom: 0.2rem;
+                font-family: var(--font-body);
+                color: var(--color-white);
+            }
+
+            .card p {
+                font-size: clamp(0.72rem, 0.78vw, 0.82rem);
+                color: var(--text-light);
+                line-height: 1.3;
+                max-width: 95%;
+            }
+
+            .card-text-extra {
+                display: inline;
+            }
+
+            /* Pod 400px skrajšamo besedilo v karticah in omejimo na točno 2 vrstici */
+            @media (max-width: 400px) {
+                .card-text-extra {
+                    display: none;
+                }
+
+                .card p {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-size: 0.72rem;
+                    line-height: 1.25;
+                }
+            }
+
+            /* --- SPECIFIČNE SLIKE KARTIC (CENTER CENTER) --- */
+            .card-epub .card-bg {
+                background-image: url('../images/epub-reader.webp');
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .card-besedomat .card-bg {
+                background-image: url('../images/besedomat.webp');
+                background-position: center top;
+                background-size: cover;
+            }
+
+            .card-mediji .card-bg {
+                background-image: url('../images/atlas-medijev.webp');
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .card-odprto .card-bg {
+                background-image: url('../images/ucenje.webp');
+                background-position: center center;
+                background-size: cover;
+                background-color: #1a2332;
+            }
+
+            .card-racunkomat .card-bg {
+                background-image: url('../images/racunkomat.webp');
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .card-upn .card-bg {
+                background-image: url('../images/upn-qr-studio.webp');
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .card-miselni .card-bg {
+                background-image: url('../images/miselni-izzivi.webp');
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .card-klasiki .card-bg {
+                background-image: url('../images/preseren.webp');
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .card-igra .card-bg {
+                background-image: url('../images/zgodbe.webp');
+                background-position: center center;
+                background-size: cover;
+                background-color: #24192b;
+            }
+
+            .card-arhiv .card-bg {
+                background-image: url('../images/arhiv.webp');
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .card-arhiv .more-projects-title {
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+            }
+
+            .card-arhiv .arrow-icon {
+                font-size: 1.2em;
+                display: inline-block;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                color: var(--color-white);
+            }
+
+            .card-arhiv:hover .arrow-icon {
+                transform: translate(5px, -5px);
+            }
+
+            /* --- PREMIUM STATUS BADGES IN META --- */
+            .card-meta {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                pointer-events: none;
+            }
+
+            .card-badge {
+                font-family: var(--font-body);
+                font-size: 0.65rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                padding: 4px 10px;
+                background: rgba(0, 0, 0, 0.7);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 99px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            }
+
+            .badge-dot {
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: var(--color-white);
+            }
+
+            .badge-active .badge-dot {
+                background-color: #0AE448;
+                box-shadow: 0 0 10px #0AE448, 0 0 4px #0AE448;
+                animation: pulse 2.0s infinite alternate;
+            }
+
+            .badge-tool .badge-dot {
+                background-color: #FF774B;
+                box-shadow: 0 0 10px #FF774B, 0 0 4px #FF774B;
+                animation: pulse 2.0s infinite alternate;
+            }
+
+            .badge-edu .badge-dot {
+                background-color: #CD237F;
+                box-shadow: 0 0 10px #CD237F, 0 0 4px #CD237F;
+                animation: pulse 2.0s infinite alternate;
+            }
+
+            @keyframes pulse {
+                0% {
+                    opacity: 0.5;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+        }
+
+        @layer block {
+
+            /* --- EDITORIAL: FILOZOFIJA & PRISTOP (Sekcija 3) --- */
+            .philosophy-section {
+                background: var(--background-deep);
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: clamp(1.5rem, 5vw, 4.5rem);
+                padding-right: clamp(2.5rem, 6vw, 4.5rem);
+                padding-top: clamp(4.5rem, 9vh, 7rem);
+                padding-bottom: clamp(1.5rem, 4vh, 3rem);
+            }
+
+            /* Ambient Spotlight na 3. sekciji */
+            .philosophy-section::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(700px circle at var(--phil-mouse-x, 50%) var(--phil-mouse-y, 50%), rgba(255, 255, 255, 0.045), transparent 60%);
+                pointer-events: none;
+                z-index: 0;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+
+            .philosophy-section.has-mouse::before {
+                opacity: 1;
+            }
+
+            .philosophy-header {
+                position: absolute;
+                top: 5vh;
+                left: clamp(1.5rem, 5vw, 4.5rem);
+                width: auto;
+                z-index: 2;
+            }
+
+            .editorial-layout {
+                display: flex;
+                flex-direction: column;
+                gap: clamp(1.2rem, 2.5vh, 2.2rem);
+                width: 100%;
+                max-width: 100%;
+                position: relative;
+                z-index: 1;
+            }
+
+            /* 2-stolpčni editorial: Uvod levo, Numeriran seznam desno */
+            .editorial-columns {
+                display: grid;
+                grid-template-columns: 1fr 1.35fr;
+                gap: clamp(2.5rem, 5vw, 6rem);
+                align-items: start;
+            }
+
+            /* Levi stolpec: Pristop */
+            .editorial-col-main {
+                display: flex;
+                flex-direction: column;
+                gap: clamp(1.4rem, 2.8vh, 2.5rem);
+            }
+
+            .editorial-quote {
+                font-size: clamp(1.65rem, 2.9vw, 3rem);
+                font-weight: 700;
+                color: var(--color-white);
+                line-height: 1.15;
+                letter-spacing: -0.03em;
+                margin: 0;
+                padding: 0;
+                border: none;
+                position: relative;
+                padding-left: clamp(1.2rem, 1.8vw, 1.8rem);
+            }
+
+            .editorial-quote::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0.15em;
+                bottom: 0.15em;
+                width: 3px;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.08));
+                border-radius: 2px;
+            }
+
+            .editorial-heading {
+                font-size: 0.82rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                color: var(--muted-foreground);
+                margin-bottom: 0.8rem;
+            }
+
+            .editorial-intro {
+                display: flex;
+                flex-direction: column;
+                gap: clamp(0.7rem, 1.5vh, 1.2rem);
+            }
+
+            .editorial-intro p {
+                font-size: clamp(0.88rem, 0.94vw, 1.02rem);
+                color: var(--text-light);
+                line-height: 1.68;
+                margin: 0;
+                max-width: 100%;
+            }
+
+            /* Desni stolpec: Swiss numerirane postavke z levo navpično ločilnico */
+            .editorial-col-list {
+                display: flex;
+                flex-direction: column;
+                gap: clamp(0.4rem, 0.9vh, 0.8rem);
+            }
+
+            .swiss-item {
+                display: flex;
+                align-items: flex-start;
+                gap: clamp(0.8rem, 1.4vw, 1.4rem);
+                padding-left: clamp(0.75rem, 1.1vw, 1.1rem);
+                padding-right: clamp(0.5rem, 1vw, 1rem);
+                padding-block: clamp(0.35rem, 0.7vh, 0.65rem);
+                border-left: 2px solid rgba(255, 255, 255, 0.1);
+                border-radius: 0 8px 8px 0;
+                transition: border-left-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    background 0.35s ease,
+                    opacity 0.35s ease;
+                will-change: transform, opacity;
+            }
+
+            @media (hover: hover) {
+
+                /* Editorial Focus Mode: ko miška lebdi nad seznamom, se neaktivne točke zmehčajo */
+                .editorial-col-list:hover .swiss-item {
+                    opacity: 0.35;
+                }
+
+                .editorial-col-list .swiss-item:hover {
+                    opacity: 1;
+                    border-left-color: rgba(255, 255, 255, 0.95);
+                    transform: translateX(6px);
+                    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
+                }
+
+                .editorial-col-list .swiss-item:hover .swiss-num {
+                    color: var(--color-white);
+                    transform: scale(1.08);
+                }
+
+                .editorial-col-list .swiss-item:hover h4 {
+                    color: #fff;
+                    text-shadow: 0 0 16px rgba(255, 255, 255, 0.3);
+                }
+            }
+
+            .swiss-num {
+                font-family: inherit;
+                font-size: clamp(0.78rem, 0.88vw, 0.95rem);
+                font-weight: 700;
+                color: rgba(255, 255, 255, 0.35);
+                letter-spacing: 0.05em;
+                margin-top: 0.12rem;
+                flex-shrink: 0;
+                transition: color 0.3s ease, transform 0.3s ease;
+                will-change: transform, color;
+            }
+
+            .swiss-content {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                flex: 1;
+            }
+
+            .swiss-header-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.6rem;
+                flex-wrap: wrap;
+            }
+
+            .swiss-tag {
+                font-family: var(--font-mono);
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                padding: 2px 6px;
+                border-radius: 3px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                color: rgba(255, 255, 255, 0.75);
+                text-transform: uppercase;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                white-space: nowrap;
+            }
+
+            .swiss-content h4 {
+                font-size: clamp(0.85rem, 0.92vw, 0.98rem);
+                font-weight: 700;
+                color: var(--color-white);
+                margin: 0;
+                letter-spacing: 0.02em;
+                transition: color 0.3s ease, text-shadow 0.3s ease;
+            }
+
+            .swiss-content p {
+                font-size: clamp(0.8rem, 0.86vw, 0.9rem);
+                color: var(--muted-foreground);
+                line-height: 1.52;
+                margin: 0;
+                max-width: 100%;
+            }
+
+            /* Tehnološki trak */
+            .editorial-tech-bar {
+                font-size: clamp(0.75rem, 0.82vw, 0.85rem);
+                letter-spacing: 0.05em;
+                color: rgba(255, 255, 255, 0.4);
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 2px;
+                padding-top: clamp(0.6rem, 1.2vh, 1rem);
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                position: relative;
+            }
+
+            .tech-bar-label {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                color: rgba(255, 255, 255, 0.7);
+                margin-right: 0.8em;
+            }
+
+            .editorial-tech-bar span:not(.tech-sep):not(.tech-bar-label) {
+                display: inline-block;
+                padding: 2px 7px;
+                border-radius: 4px;
+                background: transparent;
+                border: 1px solid transparent;
+                transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+                cursor: default;
+            }
+
+            @media (hover: hover) {
+                .editorial-tech-bar span:not(.tech-sep):not(.tech-bar-label):hover {
+                    color: var(--color-white);
+                    background: rgba(255, 255, 255, 0.08);
+                    border-color: rgba(255, 255, 255, 0.2);
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.1);
+                }
+            }
+
+            .tech-sep {
+                margin-inline: 0.5em;
+                opacity: 0.3;
+                font-size: 0.9em;
+            }
+
+            /* --- STOPNJE SKRAJŠEVANJA ZA POPOLNO PRILEGANJE V 100SVH --- */
+
+            /* Stopnja 1: Pri širini pod 855px skrajšamo le desne točke, levo besedilo pa v celoti ohranimo */
+            @media (max-width: 855px) {
+                .swiss-item .text-desktop {
+                    display: none !important;
+                }
+
+                .philosophy-section {
+                    padding-left: clamp(1.2rem, 3.5vw, 2.5rem);
+                    padding-right: clamp(2.6rem, 5.5vw, 3.5rem);
+                    padding-top: clamp(3.2rem, 6.5vh, 4.2rem);
+                    padding-bottom: clamp(0.8rem, 2vh, 1.5rem);
+                }
+
+                .editorial-layout {
+                    gap: clamp(0.6rem, 1.4vh, 1.1rem);
+                }
+
+                .editorial-columns {
+                    grid-template-columns: 1fr 1.18fr;
+                    gap: clamp(1.2rem, 2.8vw, 2.5rem);
+                }
+
+                .editorial-quote {
+                    font-size: clamp(1.4rem, 2.4vw, 2rem);
+                    line-height: 1.15;
+                    padding-left: clamp(0.8rem, 1.2vw, 1.2rem);
+                }
+
+                .editorial-intro p {
+                    font-size: clamp(0.84rem, 0.9vw, 0.94rem);
+                    line-height: 1.5;
+                }
+
+                .swiss-item {
+                    gap: clamp(0.6rem, 1.2vw, 1rem);
+                    padding-left: clamp(0.6rem, 1vw, 0.9rem);
+                    padding-block: clamp(0.25rem, 0.5vh, 0.45rem);
+                }
+
+                .swiss-num {
+                    font-size: clamp(0.72rem, 0.8vw, 0.82rem);
+                }
+
+                .swiss-content h4 {
+                    font-size: clamp(0.8rem, 0.86vw, 0.88rem);
+                }
+
+                .swiss-content p {
+                    font-size: clamp(0.75rem, 0.8vw, 0.82rem);
+                    line-height: 1.38;
+                }
+
+                .editorial-tech-bar {
+                    padding-top: clamp(0.35rem, 0.7vh, 0.6rem);
+                    font-size: clamp(0.7rem, 0.76vw, 0.76rem);
+                }
+            }
+
+            /* Stopnja 2: Na mobilnih napravah (pod 650px) preklop v enostolpčno kompaktno strukturo */
+            @media (max-width: 650px) {
+                .philosophy-section {
+                    padding-left: clamp(1rem, 3.5vw, 2rem);
+                    padding-right: clamp(2.6rem, 7vw, 3.5rem);
+                }
+
+                .editorial-columns {
+                    grid-template-columns: 1fr;
+                    gap: 0.8rem;
+                }
+
+                .editorial-col-main .text-desktop,
+                .text-medium {
+                    display: none !important;
+                }
+
+                .editorial-intro p {
+                    font-size: 0.84rem;
+                    line-height: 1.42;
+                }
+
+                .swiss-item {
+                    padding-block: 0.22rem;
+                    padding-left: 0.65rem;
+                }
+
+                .swiss-tag {
+                    font-size: 0.58rem;
+                    padding: 1px 4px;
+                }
+            }
+
+            /* Stopnja 3: Na zelo ozkih zaslonih (pod 350px) */
+            @media (max-width: 350px) {
+                .philosophy-section {
+                    padding-left: 0.85rem;
+                    padding-right: 2.2rem;
+                }
+
+                .editorial-quote {
+                    font-size: 1.2rem;
+                }
+
+                .swiss-content p {
+                    font-size: 0.72rem;
+                    line-height: 1.32;
+                }
+
+                .swiss-tag {
+                    font-size: 0.52rem;
+                    padding: 0 3px;
+                }
+            }
+
+            .blueprint-grid-bg {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                z-index: 0;
+                overflow: hidden;
+            }
+
+
+
+            .blueprint-node {
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                background: var(--color-white);
+                border-radius: 50%;
+                box-shadow:
+                    0 0 0 4px rgba(255, 255, 255, 0.03),
+                    0 0 0 8px rgba(255, 255, 255, 0.01),
+                    0 0 12px rgba(255, 255, 255, 0.4);
+                opacity: 0.3;
+            }
+
+
+
+            .px-float {
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .px-img {
+                filter: grayscale(1) brightness(1.2);
+            }
+
+            /* --- Lebdeče krogle --- */
+            .trail-capsule {
+                border-radius: 50%;
+            }
+
+            .px-float.appear-later {
+                visibility: hidden;
+            }
+
+            .trail-c1 {
+                background: linear-gradient(90deg, #A1E5FF, #D7B1FF);
+            }
+
+            .trail-c2 {
+                background: linear-gradient(90deg, #FFB4D9, #A990FF);
+            }
+
+            .trail-c3 {
+                background: linear-gradient(90deg, #5EE7DF, #B490CA);
+            }
+
+            .trail-c4 {
+                background: linear-gradient(90deg, #4A00E0, #8E2DE2);
+            }
+
+            .trail-c5 {
+                background: linear-gradient(90deg, #231557, #44107A);
+                border: 1px solid oklch(1 0 0 / 10%);
+            }
+
+            .px-glow {
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                top: 30%;
+                left: 25%;
+                opacity: 0.1;
+                background: radial-gradient(circle, oklch(0.35 0.08 280 / 40%), transparent 70%);
+                filter: blur(60px);
+                pointer-events: none;
+            }
+
+            /* Horizontalni trak v naravni navpični / odzivni postavitvi */
+            .gsap-text-track {
+                position: relative;
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                max-width: 1400px;
+                margin: 0 auto;
+                gap: 2.5rem;
+            }
+
+            /* Naslovni trak - skupni stil za vse podstrani (Projekti, Profil, Kontakt) */
+            .unified-header {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                z-index: 5;
+            }
+
+            .projects-page-header,
+            .about-page-header,
+            .contact-page-header {
+                position: absolute;
+                top: 5vh;
+                left: 8vw;
+                width: auto;
+            }
+
+            .page-sec-num {
+                font-family: var(--font-mono);
+                font-size: 1.2rem;
+                font-weight: 800;
+                color: var(--color-white);
+                background: rgba(255, 255, 255, 0.08);
+                padding: 4px 10px;
+                border-radius: 4px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                flex-shrink: 0;
+            }
+
+            .page-sec-title {
+                font-family: var(--font-mono);
+                font-size: 0.85rem;
+                letter-spacing: 0.2em;
+                color: var(--muted-foreground);
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+
+            /* Panoramska mreža kot odzivna 3-stolpčna postavitev */
+            .about-panoramic-grid {
+                display: grid;
+                grid-template-columns: 1fr 1.35fr 1fr;
+                gap: clamp(1rem, 1.8vw, 1.8rem);
+                width: 100%;
+                align-items: stretch;
+            }
+
+            .about-col {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+                min-width: 0;
+                color: var(--color-white);
+                padding: clamp(1.2rem, 2.5vh, 1.8rem);
+                border-radius: 18px;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s ease, border-color 0.3s ease;
+            }
+
+            .about-col:hover {
+                transform: translateY(-4px);
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .col-tag {
+                font-family: var(--font-mono);
+                font-size: 0.75rem;
+                color: var(--muted-foreground);
+                letter-spacing: 0.15em;
+                margin-block-end: 0.5rem;
+                text-transform: uppercase;
+                display: inline-block;
+            }
+
+            .col-title {
+                font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: -0.02em;
+                line-height: 1.1;
+                margin-block-end: 0.75rem;
+                color: var(--color-white);
+            }
+
+            .col-text {
+                font-size: clamp(0.85rem, 0.95vw, 0.95rem);
+                color: var(--text-light);
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            .col-divider {
+                display: none;
+            }
+
+            .col-tech {
+                width: 100%;
+                min-width: 0;
+            }
+
+            /* Tech Grid — 2 stolpca s karticami */
+            .tech-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(0.5rem, 1vh, 0.8rem);
+                margin-top: 0.5rem;
+            }
+
+            .tech-card {
+                padding: 8px 12px;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                justify-content: center;
+                transition: background 0.2s ease, border-color 0.2s ease;
+            }
+
+            .tech-card:hover {
+                background: rgba(255, 255, 255, 0.06);
+                border-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .tech-category {
+                font-family: var(--font-mono);
+                font-size: 0.65rem;
+                color: var(--muted-foreground);
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+
+            .tech-names {
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: var(--color-white);
+                line-height: 1.2;
+            }
+
+
+            /* --- Dodatni elementi za lepši videz kartic --- */
+            .profile-details {
+                margin-top: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+                border-top: 1px dashed rgba(255, 255, 255, 0.1);
+                padding-top: 1.5rem;
+            }
+
+            .p-detail {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.8rem;
+                font-family: var(--font-mono);
+            }
+
+            .pd-label {
+                color: var(--muted-foreground);
+                letter-spacing: 0.05em;
+            }
+
+            .pd-val {
+                color: var(--color-white);
+                font-weight: 600;
+            }
+
+            .approach-principles {
+                margin-top: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                border-top: 1px dashed rgba(255, 255, 255, 0.1);
+                padding-top: 1.5rem;
+            }
+
+            .approach-principles li {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                font-size: 0.85rem;
+                color: var(--text-light);
+                font-weight: 500;
+            }
+
+            .approach-principles li span {
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 2px 7px;
+                border-radius: 4px;
+                color: var(--primary);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .tech-category {
+                font-family: var(--font-mono);
+                font-size: 0.75rem;
+                color: var(--muted-foreground);
+                letter-spacing: 0.15em;
+            }
+
+            .tech-names {
+                font-weight: 700;
+                font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+                color: var(--color-white);
+                letter-spacing: -0.01em;
+            }
+
+            /* Efekti utiliti razredi */
+            .char {
+                display: inline-block;
+                will-change: transform, opacity;
+            }
+
+            .contact-section {
+                background-color: var(--color-black);
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding-inline: clamp(1.5rem, 5vw, 4rem);
+                padding-top: clamp(5rem, 11vh, 8rem);
+                padding-bottom: clamp(2rem, 5vh, 4rem);
+            }
+
+            #contact-canvas {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            .contact-section::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+                opacity: 0.1;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            /* Arhitekturno merilo v ozadju */
+            .blueprint-ruler {
+                position: absolute;
+                width: 300vw;
+                height: 50px;
+                pointer-events: none;
+                z-index: 0;
+                opacity: 0.28;
+                user-select: none;
+            }
+
+            .ruler-line {
+                width: 100%;
+                height: 1px;
+                background: linear-gradient(to right,
+                        rgba(255, 255, 255, 0.25) 0%,
+                        rgba(255, 255, 255, 0.1) 50%,
+                        rgba(255, 255, 255, 0.25) 100%);
+            }
+
+            .ruler-ticks {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+
+            .ruler-ticks .tick {
+                position: absolute;
+                top: 0;
+                width: 1px;
+                height: 10px;
+                background: rgba(255, 255, 255, 0.35);
+            }
+
+            .ruler-ticks .tick-label {
+                position: absolute;
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-family: var(--font-mono);
+                font-size: 0.65rem;
+                color: rgba(255, 255, 255, 0.35);
+                white-space: nowrap;
+                letter-spacing: 0.05em;
+            }
+
+            .contact-container {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: clamp(2rem, 8vh, 8rem);
+            }
+
+            .contact-header {
+                align-self: flex-start;
+            }
+
+            .email-hero {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                /* Razmik med elementoma */
+                position: relative;
+            }
+
+            .email-row {
+                display: flex;
+                flex-direction: column;
+                /* Vertikalna postavitev */
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .email-text {
+                /* Button reset */
+                background: none;
+                border: none;
+                padding: 0;
+                font-size: clamp(1rem, 4.2vw, 3.5rem);
+                font-weight: 700;
+                color: var(--color-white);
+                white-space: nowrap;
+                cursor: pointer;
+                letter-spacing: -0.03em;
+                position: relative;
+                display: inline-flex;
+                overflow: hidden;
+                height: 1.3em;
+                line-height: 1.3;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .email-line {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                will-change: transform;
+            }
+
+            .email-line-primary {
+                position: relative;
+            }
+
+            .email-line-secondary {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                color: var(--color-white);
+                font-weight: 700;
+                font-style: normal;
+                text-transform: lowercase;
+                letter-spacing: -0.01em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .char-primary,
+            .char-secondary {
+                display: inline-block;
+                will-change: transform;
+            }
+
+            #copy-email-btn {
+                background: transparent;
+                border: 1px solid var(--secondary);
+                color: var(--muted-foreground);
+                padding: 10px 24px;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+                transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+                font-family: monospace;
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
+
+                &:hover {
+                    border-color: var(--color-white);
+                    color: var(--color-white);
+                    background: oklch(1 0 0 / 5%);
+                }
+
+                & .btn-text::after {
+                    content: 'KOPIRAJ E-POŠTNI NASLOV';
+                }
+
+                &.copied .btn-text::after {
+                    content: 'KOPIRANO!';
+                }
+
+                & svg {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+
+            .social-minimal {
+                display: flex;
+                gap: 1.5rem;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .sm-link {
+                color: var(--muted-foreground);
+                text-decoration: none;
+                font-size: 0.85rem;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: var(--color-white);
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+                }
+
+                &:hover {
+                    color: var(--color-white);
+
+                    &::after {
+                        transform: scaleX(1);
+                    }
+                }
+            }
+
+            .sm-divider {
+                color: var(--secondary);
+                font-size: 0.8rem;
+            }
+
+
+
+            .footer-refined {
+                position: absolute;
+                bottom: clamp(1.5rem, 5vh, 3rem);
+                width: 100%;
+                text-align: center;
+                font-family: var(--font-body);
+                font-size: 0.8rem;
+                letter-spacing: 0.1em;
+                color: var(--muted-foreground);
+                opacity: 0.8;
+            }
+
+            .footer-refined p {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .footer-line-separator {
+                position: absolute;
+                bottom: clamp(3rem, 8vh, 5rem);
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% - (2 * clamp(1.5rem, 5vw, 4rem)));
+                height: 1px;
+                background: linear-gradient(to right, transparent, var(--secondary), transparent);
+                opacity: 0.3;
+            }
+
+            @media (max-width: 768px) {
+                .footer-refined {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    text-align: center;
+                }
+            }
+
+            /* --- SUPPORT BUTTONS --- */
+            .support-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .support-label {
+                font-family: monospace;
+                font-size: 0.7rem;
+                color: var(--muted-foreground);
+                letter-spacing: 0.2em;
+            }
+
+            .support-buttons {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                justify-content: center;
+                gap: 2rem;
+                /* Razmik */
+                width: max-content;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            /* Aktivacijsko območje za magnetni učinek */
+            .magnetic-trigger {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1.5rem;
+                /* Velikost magnetnega polja */
+                margin: -1.5rem;
+                /* Odmik za pravilno postavitev */
+            }
+
+            /* support-btn */
+            .support-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.6rem;
+                width: 100%;
+                /* Polna širina celice */
+                padding: 0.85rem 1.8rem;
+                border: 1px solid var(--secondary);
+                border-radius: 99px;
+                color: var(--color-white);
+                font-size: 0.85rem;
+                font-weight: 500;
+                text-decoration: none;
+                white-space: nowrap;
+                position: relative;
+                overflow: hidden;
+                background: transparent;
+                transition: border-color 0.3s, color 0.3s;
+
+                /* GPU anti-jitter fix */
+                backface-visibility: hidden;
+                will-change: transform;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            @media (max-width: 768px) {
+                .contact-section {
+                    padding-inline: clamp(1rem, 4vw, 2rem);
+                    padding-top: clamp(3.2rem, 7vh, 4.5rem);
+                    padding-bottom: clamp(1rem, 2.5vh, 2rem);
+                }
+
+                .contact-container {
+                    gap: clamp(1.2rem, 3.5vh, 2.5rem);
+                }
+
+                .email-hero {
+                    gap: 1.2rem;
+                }
+
+                .email-row {
+                    gap: 0.8rem;
+                }
+
+                .support-section {
+                    gap: 0.75rem;
+                }
+
+                .support-buttons {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 0.65rem;
+                    width: 100%;
+                    max-width: 24rem;
+                }
+
+                .support-btn {
+                    padding: 0.65rem 1rem;
+                    font-size: 0.78rem;
+                    min-width: 7.8rem;
+                    flex: 1 1 auto;
+                    max-width: 9.5rem;
+                }
+            }
+
+            /* Notranji elementi ostanejo nad bubble plastjo, zaviti v enotno 3D ploščo */
+            .support-btn .btn-content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.6rem;
+                position: relative;
+                z-index: 2;
+                backface-visibility: hidden;
+                pointer-events: none;
+            }
+
+            .support-btn svg {
+                width: 1.1rem;
+                height: 1.1rem;
+                flex-shrink: 0;
+            }
+
+            /* Bubble fill plast */
+            .support-btn .btn-bubble {
+                position: absolute;
+                inset: 0;
+                background: var(--color-white);
+                z-index: 1;
+                pointer-events: none;
+                clip-path: circle(0px at 50% 50%);
+            }
+
+            /* Unikatni prelivi za vsak gumb */
+            .magnetic-trigger:nth-child(1) .btn-bubble,
+            .support-btn-coffee .btn-bubble {
+                background: linear-gradient(to top right, #ff8709 19.42%, #f7bdf8 73.08%);
+            }
+
+            .magnetic-trigger:nth-child(2) .btn-bubble,
+            .support-btn-kofi .btn-bubble {
+                background: linear-gradient(to top right, #cd237f 21.15%, #f7bdf8 81.93%);
+            }
+
+            .magnetic-trigger:nth-child(3) .btn-bubble,
+            .support-btn-patreon .btn-bubble {
+                background: linear-gradient(to top right, #0ae448 20.74%, #abff84 65.5%);
+            }
+
+            .support-btn:hover {
+                color: var(--color-black);
+                border-color: transparent;
+            }
+
+            #copy-tooltip {
+                position: absolute;
+                top: 100%;
+                margin-top: 10px;
+                background: var(--color-white);
+                color: var(--color-black);
+                padding: 4px 12px;
+                font-size: 0.7rem;
+                font-weight: 900;
+                border-radius: 2px;
+                opacity: 0;
+                transition: all 0.3s;
+                pointer-events: none;
+            }
+
+            #copy-tooltip.show {
+                opacity: 1;
+                transform: translateY(5px);
+            }
+
+            .about-approach-label {
+                font-family: monospace;
+                font-size: 1rem;
+                display: block;
+            }
+        }
+
+        @layer utility {
+
+            /* --- FOUC PREVENTION & PROGRESSIVE ENHANCEMENT --- */
+
+            /* FALLBACK: Če JavaScript na napravi ne deluje */
+            @media (scripting: none) {
+                body {
+                    overflow: auto;
+                }
+
+                .snap-container {
+                    display: block;
+                }
+
+                section {
+                    height: auto;
+                    min-height: 100svh;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                }
+            }
+
+            /* ZAŠČITA PRED UTRIPANJEM (FOUC): Če JavaScript deluje */
+            @media (scripting: enabled) {
+
+                /* 1. Skrij vse podstrani takoj (GPU layer) za celozaslonske prehode */
+                section:not(#hero) {
+                    opacity: 0;
+                    visibility: hidden;
+                    z-index: 0;
+                    will-change: transform, opacity;
+                }
+
+                #hero {
+                    z-index: 1;
+                }
+
+                /* 2. Skrij elemente za uvodno animacijo, da preprečimo 'flash' ob nalaganju JS */
+                #hero .hero-header,
+                .hero-background-visual,
+                .hero__suggest {
+                    opacity: 0;
+                    visibility: hidden;
+                    will-change: transform, opacity;
+                }
+            }
+
+            /* --- CUSTOM CURSOR --- */
+            #custom-cursor {
+                position: fixed;
+                width: 12px;
+                height: 12px;
+                background: var(--color-white);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                mix-blend-mode: difference;
+                transition: transform 0.15s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+            }
+
+            /* Napis znotraj kurzorja (za hover na projektih) */
+            #custom-cursor::after {
+                content: var(--cursor-text, 'VIEW');
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-family: var(--font-body);
+                font-size: 10px;
+                font-weight: 900;
+                color: var(--color-black);
+                opacity: 0;
+                transition: opacity 0.2s;
+            }
+
+            /* Aktivno stanje kurzorja (povečan krog z napisom) */
+            #custom-cursor.active {
+                width: 80px;
+                height: 80px;
+                mix-blend-mode: normal;
+                background: var(--color-white);
+            }
+
+            #custom-cursor.active::after {
+                opacity: 1;
+            }
+
+            /* Skrijemo na touch napravah */
+            @media (pointer: coarse) {
+                #custom-cursor {
+                    display: none;
+                }
+            }
+
+            /*
+             * OPOMBA ZA KASNEJE (IDEJA ZA TESTIRANJE):
+             * Če bi kasneje želeli blokado celozaslonskega GSAP scrolla samo za prave mobilne naprave (telefone/tablice),
+             * se lahko uporabi kombinacija media poizvedb za touch (npr. (hover: none) and (pointer: coarse))
+             * ali detekcija mobilnega user-agenta, brez vpliva na prenosnike s touchscreenom.
+             * Trenutno je omogočen celozaslonski GSAP scroll na vseh napravah/širinah.
+             */
+
+            /* ==========================================================================
+               ODZIVNOST BENTO GRIDA (PRENOSNIKI, TABLICE IN MOBILNE NAPRAVE)
+               ========================================================================== */
+
+            /* 1. Prenosniki in standardni zasloni (901px – 1400px): Eleganten 6-kartični 3×3 Bento Grid */
+            @media (max-width: 1400px) and (min-width: 901px) {
+                .grid-container {
+                    display: grid;
+                    grid-template-columns: 1.2fr 1fr 1fr;
+                    grid-template-rows: 1.35fr 1.15fr 0.85fr;
+                    gap: clamp(8px, 1.2vw, 12px);
+                    height: 100%;
+                    padding: 2px;
+                }
+
+                /* 1. E-bralnik (Glavni Hero zgoraj levo čez 2 stolpca) */
+                .card-epub {
+                    grid-column: 1 / 3;
+                    grid-row: 1 / 2;
+                    display: flex !important;
+                }
+
+                /* 2. Besedomat (Zgoraj desno 1 stolpec) */
+                .card-besedomat {
+                    grid-column: 3 / 4;
+                    grid-row: 1 / 2;
+                    display: flex !important;
+                }
+
+                /* 3. Miselni izzivi (Sredina levo 1 stolpec) */
+                .card-miselni {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                    display: flex !important;
+                }
+
+                /* 4. Atlas medijev (Sredina center 1 stolpec) */
+                .card-mediji {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                    display: flex !important;
+                }
+
+                /* 5. Računkomat (Sredina desno 1 stolpec) */
+                .card-racunkomat {
+                    grid-column: 3 / 4;
+                    grid-row: 2 / 3;
+                    display: flex !important;
+                }
+
+                /* 6. Vsi projekti / Arhiv ↗ (Spodaj čez vse 3 stolpce) */
+                .card-arhiv {
+                    grid-column: 1 / -1;
+                    grid-row: 3 / 4;
+                    display: flex !important;
+                }
+
+                /* Dopolnilne kartice skrijemo v tem razponu (dostopne v Arhivu) */
+                .card-upn,
+                .card-odprto,
+                .card-klasiki,
+                .card-igra {
+                    display: none !important;
+                }
+
+                .card {
+                    padding: clamp(0.7rem, 1.4vw, 1rem);
+                    border-radius: 14px;
+                }
+
+                .card h3 {
+                    font-size: clamp(0.92rem, 1.4vw, 1.15rem);
+                }
+
+                .card p {
+                    font-size: clamp(0.7rem, 0.95vw, 0.8rem);
+                    line-height: 1.3;
+                }
+
+                .card-tag,
+                .card-badge {
+                    font-size: 0.58rem;
+                }
+            }
+
+            /* 2. Manjše tablice in ležeči telefoni (501px – 900px): Čist 4-kartični prikaz (2 stolpca) */
+            @media (max-width: 900px) and (min-width: 501px) {
+                .grid-container {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1.35fr 1.15fr 0.85fr;
+                    gap: 8px;
+                    height: 100%;
+                    padding: 2px;
+                }
+
+                /* 3 vodilni projekti + povezava v Arhiv */
+                .card-epub {
+                    grid-column: 1 / -1;
+                    grid-row: 1 / 2;
+                    display: flex !important;
+                }
+
+                .card-besedomat {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                    display: flex !important;
+                }
+
+                .card-miselni {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                    display: flex !important;
+                }
+
+                .card-arhiv {
+                    grid-column: 1 / -1;
+                    grid-row: 3 / 4;
+                    display: flex !important;
+                }
+
+                /* Ostale kartice skrijemo */
+                .card-racunkomat,
+                .card-upn,
+                .card-odprto,
+                .card-klasiki,
+                .card-mediji,
+                .card-igra {
+                    display: none !important;
+                }
+
+                .card {
+                    padding: clamp(0.65rem, 1.6vw, 0.9rem);
+                    border-radius: 12px;
+                }
+
+                .card h3 {
+                    font-size: clamp(0.9rem, 2.8vw, 1.1rem);
+                }
+
+                .card p {
+                    font-size: clamp(0.68rem, 1.8vw, 0.78rem);
+                    line-height: 1.25;
+                }
+
+                .card-tag,
+                .card-badge {
+                    font-size: 0.55rem;
+                    padding: 1px 5px;
+                }
+            }
+
+            /* 3. Pokončni telefoni (pod 500px): 4 kartice v enem samem čistem navpičnem stolpcu */
+            @media (max-width: 500px) {
+                .grid-container {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1.25fr 1.05fr 1.05fr 0.8fr;
+                    gap: 7px;
+                    height: 100%;
+                    padding: 2px;
+                }
+
+                /* Vse 4 kartice ena pod drugo čez polno širino */
+                .card-epub {
+                    grid-column: 1;
+                    grid-row: 1 / 2;
+                    display: flex !important;
+                }
+
+                .card-besedomat {
+                    grid-column: 1;
+                    grid-row: 2 / 3;
+                    display: flex !important;
+                }
+
+                .card-miselni {
+                    grid-column: 1;
+                    grid-row: 3 / 4;
+                    display: flex !important;
+                }
+
+                .card-arhiv {
+                    grid-column: 1;
+                    grid-row: 4 / 5;
+                    display: flex !important;
+                }
+
+                /* Ostale kartice skrijemo */
+                .card-racunkomat,
+                .card-upn,
+                .card-odprto,
+                .card-klasiki,
+                .card-mediji,
+                .card-igra {
+                    display: none !important;
+                }
+
+                .card {
+                    padding: clamp(0.5rem, 1.2vh, 0.75rem);
+                    border-radius: 10px;
+                }
+
+                .card h3 {
+                    font-size: clamp(0.82rem, 3.8vw, 0.98rem);
+                    margin-bottom: 0.15rem;
+                }
+
+                .card p {
+                    font-size: clamp(0.64rem, 2.6vw, 0.74rem);
+                    line-height: 1.2;
+                }
+
+                .card-tag,
+                .card-badge {
+                    font-size: 0.52rem;
+                    padding: 1px 4px;
+                }
+            }
+
+            /* --- UTILITY CLASS --- */
+            .hidden {
+                display: none;
+            }
+
+            /* fx-width-expand support classes */
+            .fx-width-expand {
+                display: inline-flex;
+                align-items: baseline;
+                width: 0px;
+                overflow: hidden;
+                white-space: nowrap;
+                opacity: 0;
+            }
+
+            .expand-inner {
+                display: inline-block;
+                padding-right: 0.05em;
+            }
+
+            /* --- MOBILNI POPRAVKI IN PODPORA ZA TABLICE / TELEFONE --- */
+            @media (hover: none), (pointer: coarse) {
+                .card .card-bg {
+                    background-blend-mode: normal;
+                }
+
+                .card::before {
+                    background: linear-gradient(to bottom, oklch(0 0 0 / 0.3) 0%, oklch(0 0 0 / 0.5) 40%, oklch(0 0 0 / 0.95) 100%);
+                }
+
+                /* Gumbi podpore so na vseh napravah na dotik (tablice, telefoni) takoj jasno vidni */
+                .support-btn {
+                    color: #000000 !important;
+                    border: none !important;
+                    font-weight: 600 !important;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                }
+
+                .support-btn-coffee,
+                .support-buttons .support-btn:nth-child(1),
+                .support-buttons .magnetic-trigger:nth-child(1) .support-btn {
+                    background: linear-gradient(to top right, #ff8709 19.42%, #f7bdf8 73.08%) !important;
+                }
+
+                .support-btn-kofi,
+                .support-buttons .support-btn:nth-child(2),
+                .support-buttons .magnetic-trigger:nth-child(2) .support-btn {
+                    background: linear-gradient(to top right, #cd237f 21.15%, #f7bdf8 81.93%) !important;
+                }
+
+                .support-btn-patreon,
+                .support-buttons .support-btn:nth-child(3),
+                .support-buttons .magnetic-trigger:nth-child(3) .support-btn {
+                    background: linear-gradient(to top right, #0ae448 20.74%, #abff84 65.5%) !important;
+                }
+
+                .support-btn .btn-bubble {
+                    display: none !important;
+                }
+            }
+
+        }
