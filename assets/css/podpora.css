@@ -440,6 +440,14 @@ body:not(:has(.snap-container)) {
 }
 
 /* UPN QR razdelek */
+.upn-col {
+    container-type: inline-size;
+}
+
+.upn-controls-row {
+    display: grid;
+}
+
 .upn-amounts-row {
     display: flex;
     gap: 0.6rem;
@@ -513,6 +521,43 @@ body:not(:has(.snap-container)) {
     color: var(--text-muted);
     font-size: 0.85rem;
     pointer-events: none;
+}
+
+@container (min-width: 580px) {
+    .upn-controls-row {
+        grid-template-columns: minmax(0, 1fr) minmax(270px, 1fr);
+        align-items: center;
+        gap: var(--space-3);
+    }
+
+    .upn-amounts-row,
+    .custom-amount-wrapper {
+        margin-bottom: 0;
+        flex-wrap: nowrap;
+    }
+
+    .amount-btn {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .custom-amount-wrapper {
+        gap: var(--space-1);
+    }
+
+    .custom-amount-label {
+        white-space: nowrap;
+    }
+
+    .custom-amount-field {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .custom-amount-field input {
+        width: 100%;
+        min-width: 100px;
+    }
 }
 
 .qr-display-box {
