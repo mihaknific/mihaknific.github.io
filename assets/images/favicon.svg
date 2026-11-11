@@ -1,0 +1,19 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Privzeto (Light Mode) */
+    rect { fill: #FFFFFF; }
+    text { fill: #000000; }
+    
+    /* Dark Mode - inverzno */
+    @media (prefers-color-scheme: dark) {
+    rect { fill: #000000; }
+    text { fill: #FFFFFF; }
+    }
+  </style>
+  
+  <!-- Ozadje z zaokroženimi robovi -->
+  <rect x="0" y="0" width="128" height="128" rx="24" ry="24" />
+  
+  <!-- Besedilo -->
+  <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="64">MK</text>
+</svg>

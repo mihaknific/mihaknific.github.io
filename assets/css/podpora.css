@@ -1,0 +1,776 @@
+/* ========================================
+   PODPORA & DONACIJE — Samostojna stran
+   ======================================== */
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/Inter-Variable.ttf') format('truetype');
+}
+
+:root {
+    --background: oklch(0.14 0 0);
+    --foreground: oklch(0.99 0 0);
+    --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --space-1: 0.5rem;
+    --space-2: 0.75rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 3rem;
+
+    --text-muted: rgba(255, 255, 255, 0.45);
+    --text-body: rgba(255, 255, 255, 0.7);
+    --text-subtle: rgba(255, 255, 255, 0.35);
+    --text-hover: rgba(255, 255, 255, 0.9);
+
+    --surface: rgba(255, 255, 255, 0.03);
+    --surface-card: rgba(255, 255, 255, 0.03);
+    --surface-hover: rgba(255, 255, 255, 0.06);
+    --surface-active: rgba(255, 255, 255, 0.1);
+
+    --border: rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(255, 255, 255, 0.12);
+    --border-hover: rgba(255, 255, 255, 0.2);
+
+    --accent-rose: #fb7185;
+    --accent-peach: #fed7aa;
+    --accent-revolut: #0075eb;
+    --accent-emerald: #34d399;
+    --accent-amber: #fbbf24;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body:not(:has(.snap-container)) html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    scroll-behavior: smooth;
+}
+
+body:not(:has(.snap-container)) h1,
+body:not(:has(.snap-container)) h2,
+body:not(:has(.snap-container)) h3,
+body:not(:has(.snap-container)) h4,
+body:not(:has(.snap-container)) p,
+body:not(:has(.snap-container)) figure,
+body:not(:has(.snap-container)) blockquote {
+    margin: 0;
+}
+
+.podpora-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.podpora-container button {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+body:not(:has(.snap-container)) {
+    color-scheme: dark;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Glavni vsebnik */
+.podpora-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3.5rem 1.75rem 6rem;
+    min-height: 100vh;
+}
+
+/* Povratna povezava */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s ease, transform 0.2s ease;
+    align-self: flex-start;
+}
+
+.back-link svg {
+    transition: transform 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--text-hover);
+    transform: translateX(-3px);
+}
+
+.back-link:hover svg {
+    transform: translateX(-2px);
+}
+
+/* Glava */
+.podpora-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+}
+
+.podpora-header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--accent-emerald);
+    text-transform: uppercase;
+}
+
+.podpora-header-tag::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-emerald);
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
+}
+
+.podpora-header h1 {
+    font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+}
+
+.podpora-header p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 680px;
+}
+
+/* Seznam možnosti */
+.podpora-methods {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+/* Revolut kartica */
+.method-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    padding: clamp(1.5rem, 3.5vw, 2.25rem);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.method-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.method-card.featured {
+    border-color: rgba(52, 211, 153, 0.3);
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.method-card.featured:hover {
+    border-color: rgba(52, 211, 153, 0.5);
+    box-shadow: 0 16px 40px rgba(52, 211, 153, 0.14);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-body);
+}
+
+.card-badge.badge-zero {
+    background: rgba(52, 211, 153, 0.1);
+    border-color: rgba(52, 211, 153, 0.25);
+    color: var(--accent-emerald);
+}
+
+.card-badge.badge-featured {
+    background: rgba(52, 211, 153, 0.12);
+    border-color: rgba(52, 211, 153, 0.32);
+    color: var(--accent-emerald);
+}
+
+.card-badge.badge-featured::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-emerald);
+    box-shadow: 0 0 8px rgba(52, 211, 153, 0.7);
+}
+
+.card-badge.badge-fee {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: #fbbf24;
+}
+
+.card-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.card-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.35rem;
+}
+
+.card-desc {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: var(--space-4);
+    max-width: 620px;
+}
+
+/* Gumb v kartici */
+.card-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 99px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: #ffffff;
+    color: #000000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.card-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    opacity: 0.95;
+}
+
+.card-cta-btn.btn-revolut {
+    background: linear-gradient(135deg, #0075eb 0%, #00b4d8 100%);
+    color: #ffffff;
+}
+
+.card-cta-btn.btn-revolut:hover {
+    box-shadow: 0 8px 25px rgba(0, 117, 235, 0.4);
+}
+
+/* Prikaz Revolut QR kode */
+.revolut-hero-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.revolut-left {
+    flex: 1 1 360px;
+}
+
+.revolut-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.revolut-handle-pill {
+    font-family: monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-body);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 0.45rem 0.9rem;
+    border-radius: 99px;
+}
+
+.revolut-right-qr {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.revolut-qr-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    text-align: center;
+    box-shadow: none;
+}
+
+.revolut-qr-box {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.revolut-qr-box:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.12);
+}
+
+.revolut-qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.revolut-qr-logo-badge {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.revolut-qr-logo-badge svg {
+    width: 16px;
+    height: 16px;
+}
+
+.revolut-qr-note {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.revolut-qr-note strong {
+    font-size: 0.78rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.revolut-qr-note span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+/* Dvostolpčna postavitev za UPN in SEPA */
+.two-col-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: var(--space-4);
+}
+
+/* UPN QR razdelek */
+.upn-amounts-row {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.amount-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text-body);
+    transition: all 0.2s ease;
+}
+
+.amount-btn:hover {
+    border-color: var(--border-hover);
+    color: #ffffff;
+}
+
+.amount-btn.active {
+    background: var(--accent-emerald);
+    border-color: var(--accent-emerald);
+    color: #000000;
+    box-shadow: 0 4px 14px rgba(52, 211, 153, 0.35);
+}
+
+.custom-amount-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.custom-amount-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.custom-amount-field {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.custom-amount-field input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: #ffffff;
+    padding: 0.45rem 1.7rem 0.45rem 0.75rem;
+    font-size: 0.9rem;
+    width: 130px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.custom-amount-field input:focus {
+    border-color: var(--accent-emerald);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.25);
+}
+
+.custom-currency {
+    position: absolute;
+    right: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+
+.qr-display-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.qr-code-img {
+    width: 170px;
+    height: 170px;
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.qr-code-img canvas,
+.qr-code-img img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    border-radius: 4px;
+}
+
+.qr-hint {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    max-width: 270px;
+}
+
+.qr-subhint {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-subtle);
+    margin-top: 0.4rem;
+    line-height: 1.35;
+}
+
+/* SEPA podatki in gumb za kopiranje */
+.sepa-data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: var(--space-4);
+}
+
+.sepa-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    gap: 1rem;
+}
+
+.sepa-row.iban-row {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.sepa-label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+}
+
+.sepa-value {
+    color: #ffffff;
+    font-weight: 500;
+    font-family: monospace;
+    font-size: 0.9rem;
+    word-break: break-all;
+    text-align: right;
+}
+
+.copy-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.copy-pill-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.copy-pill-btn.copied {
+    background: rgba(52, 211, 153, 0.2);
+    border-color: rgba(52, 211, 153, 0.4);
+    color: var(--accent-emerald);
+}
+
+/* Platforme */
+.fee-notice-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem 1.15rem;
+    background: rgba(245, 158, 11, 0.06);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 0.85rem;
+    margin-bottom: var(--space-3);
+}
+
+.fee-notice-icon {
+    color: #fbbf24;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.fee-notice-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.fee-notice-text {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+.fee-notice-text strong {
+    color: #ffffff;
+}
+
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: var(--space-2);
+}
+
+.platform-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    transition: all 0.25s ease;
+}
+
+.platform-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+.platform-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+
+.platform-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.platform-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.platform-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Noga */
+.podpora-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+    color: var(--text-subtle);
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Obvestilo */
+#toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 99px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    z-index: 1000;
+}
+
+#toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Prilagoditev za manjše zaslone */
+@media (max-width: 768px) {
+    .podpora-container {
+        padding: 2.5rem 1.25rem 4rem;
+        gap: var(--space-4);
+    }
+
+    .two-col-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sepa-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+
+    .sepa-value {
+        text-align: left;
+    }
+}

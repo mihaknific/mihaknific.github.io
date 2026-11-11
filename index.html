@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Miha Knific</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <meta name="description" content="Miha Knific, magister kognitivne znanosti.">
+
+    <meta name="author" content="Miha Knific">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mihaknific.github.io/">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Preload pisave -->
+    <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="assets/images/herobg-hd.webp" as="image" type="image/webp">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Miha Knific",
+          "url": "https://mihaknific.github.io/",
+          "inLanguage": ["sl-SI"]
+        },
+        {
+          "@type": "Person",
+          "name": "Miha Knific",
+          "url": "https://mihaknific.github.io/",
+          "image": "https://mihaknific.github.io/assets/images/herobg-hd.webp", "jobTitle": "Magister kognitivne znanosti / MSc of Cognitive Science",
+          "sameAs": [
+            "https://linkedin.com/in/mihaknific", "https://github.com/mihaknific"
+          ],
+          "knowsAbout": ["Kognitivna znanost", "Cognitive Science"],
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "University of Ljubljana", "url": "https://www.uni-lj.si/programi/kognitivna-znanost"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <meta property="og:title" content="Miha Knific">
+    <meta property="og:description" content="Miha Knific, magister kognitivne znanosti.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mihaknific.github.io/">
+    <meta property="og:image" content="https://mihaknific.github.io/assets/images/herobg-hd.webp">
+    <meta property="og:site_name" content="Miha Knific">
+    <meta property="og:locale" content="sl_SI">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Miha Knific">
+    <meta name="twitter:description" content="Miha Knific, magister kognitivne znanosti.">
+    <meta name="twitter:image" content="https://mihaknific.github.io/assets/images/herobg-hd.webp">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/arhiv.css">
+    <link rel="stylesheet" href="assets/css/podpora.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1a1a">
+
+    <!-- Knjižnice -->
+    <script src="assets/js/fuse.min.js" defer></script>
+    <script src="assets/js/qrcode.min.js" defer></script>
+    <script src="assets/js/gsap.min.js" defer></script>
+    <script src="assets/js/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/console__easter-egg.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- Navigacijske Pikice -->
+    <nav class="nav-dots" aria-label="Glavna navigacija">
+        <a href="#hero" data-label="Domov" class="active" aria-label="Pojdi na domačo sekcijo"></a>
+        <a href="#projects" data-label="Dela" aria-label="Pojdi na sekcijo projektov"></a>
+        <a href="#contact" data-label="Kontakt" aria-label="Pojdi na kontaktno sekcijo"></a>
+    </nav>
+
+    <!-- Scroll container -->
+    <main class="snap-container">
+
+        <!-- 1. HERO -->
+        <section id="hero" class="hero-section">
+            <div class="hero-background-visual" role="img" aria-label="Ozadnja slika portfolia"></div>
+            <div class="hero-light-sweep" aria-hidden="true"></div>
+            <header class="header-position hero-header">
+                <h1 class="magnetic-text">MIHA<br>KNIFIC</h1>
+                <h2 class="magnetic-text">MAGISTER KOGNITIVNE ZNANOSTI</h2>
+            </header>
+            <div class="hero__suggest">
+                <div class="hero__suggest-outer">
+                    <div class="hero__suggest-inner"></div>
+                </div>
+                <div class="hero__suggest-text">Scroll</div>
+            </div>
+        </section>
+
+        <!-- 2. PROJEKTI (Asimetrični Bento Grid) -->
+        <section id="projects" class="projects-section">
+            <div class="grid-container">
+
+                <!-- 1. E-bralnik (Glavni Hero projekt) -->
+                <a href="https://mihaknific.github.io/spletni-bralnik/" class="card card-epub"
+                    aria-label="E-bralnik — prilagodljiv bralnik e-knjig">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">APLIKACIJA</div>
+                        </div>
+                        <div>
+                            <h3>E-bralnik</h3>
+                            <p>Prilagodljiv bralnik za ePub in PDF<span class="card-text-extra"> z glasovnim branjem
+                                    (TTS) in prilagoditvijo tipografije</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2. Besedomat (Orodje za besedila) -->
+                <a href="https://mihaknific.github.io/besedomat/" class="card card-besedomat"
+                    aria-label="Besedomat — orodje za urejanje besedil">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">ORODJE</div>
+                        </div>
+                        <div>
+                            <h3>Besedomat</h3>
+                            <p>Vsestransko orodje za urejanje besedil<span class="card-text-extra">, analizo in čiščenje
+                                    z več kot 50 funkcijami</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3. UPN QR Generator (Generator plačilnih nalogov) -->
+                <a href="https://mihaknific.github.io/upn-generator/" class="card card-upn"
+                    aria-label="UPN QR Generator — plačilni nalog s QR kodo">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">GENERATOR</div>
+                        </div>
+                        <div>
+                            <h3>UPN QR Generator</h3>
+                            <p>Plačilni nalog s QR kodo<span class="card-text-extra">, pripravljen za tisk</span>.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 4. Vsi projekti / Arhiv ↗ -->
+                <a href="arhiv.html" class="card card-arhiv more-projects-card"
+                    aria-label="Povezava na celoten arhiv projektov">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <div class="card-tag">ZBIRKA</div>
+                        </div>
+                        <div>
+                            <h3 class="more-projects-title">Vsi projekti <span class="arrow-icon">↗</span></h3>
+                            <p>Preglej celotno zbirko orodij, aplikacij in eksperimentov v arhivu.</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- 3. KONTAKT -->
+        <section id="contact" class="contact-section">
+            <canvas id="contact-canvas" aria-hidden="true"></canvas>
+            <div class="contact-container">
+
+                <div class="email-hero">
+                    <div class="email-row">
+                        <button class="email-text interactive" id="email-text" type="button"
+                            aria-label="Kopiraj e-poštni naslov">miha.devstudio@gmail.com</button>
+                        <button id="copy-email-btn" aria-label="Kopiraj">
+                            <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                            </svg>
+                            <svg class="icon-check hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M20 6 9 17l-5-5" />
+                            </svg>
+                            <span class="btn-text"></span>
+                        </button>
+                    </div>
+                    <span id="copy-tooltip">USPEŠNO KOPIRANO</span>
+                </div>
+
+                <div class="support-section">
+                    <p class="support-label">POVEZAVE</p>
+                    <div class="support-buttons">
+                        <a href="https://github.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                            class="support-btn support-btn-github" aria-label="GitHub profil">
+                            <span class="btn-content">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                                </svg>
+                                <span>GitHub</span>
+                            </span>
+                        </a>
+                        <a href="https://linkedin.com/in/mihaknific" target="_blank" rel="noopener noreferrer"
+                            class="support-btn support-btn-linkedin" aria-label="LinkedIn profil">
+                            <span class="btn-content">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                                </svg>
+                                <span>LinkedIn</span>
+                            </span>
+                        </a>
+                        <a href="podpora.html" class="support-btn support-btn-daruj"
+                            aria-label="Podpri moje delo z donacijo">
+                            <span class="btn-content">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                </svg>
+                                <span>Podpri</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-line-separator"></div>
+            <div class="footer-refined">
+                <p>© 2026 MIHA KNIFIC</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Arhiv projektov -->
+    <section id="archive-panel" class="horizontal-panel" aria-label="Arhiv vseh projektov" role="region"
+        aria-hidden="true" inert>
+        <div class="archive-container">
+            <header class="archive-header">
+                <a href="#projects" class="back-link close-panel-btn" data-target="projects" aria-label="Portfolio">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    <span class="back-link-text">Portfolio</span>
+                </a>
+                <div class="archive-title-wrapper">
+                    <h1>ARHIV PROJEKTOV</h1>
+                    <p>Pobrskaj po vseh preteklih rešitvah, orodjih in aplikacijah.</p>
+                </div>
+            </header>
+
+            <div id="searchResultsLive" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+            <div class="archive-controls-wrapper">
+                <div class="controls-row-top">
+                    <div class="search-group">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            width="18" height="18">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="search" id="searchInput" placeholder="Išči po projektih..."
+                            aria-label="Iskanje projektov" aria-controls="projectsContainer">
+                    </div>
+
+                    <div class="view-toggles">
+                        <button id="gridViewBtn" class="view-btn active" aria-label="Mrežni pogled (Tipka: G)"
+                            aria-pressed="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                height="16">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                            Mreža
+                        </button>
+                        <button id="listViewBtn" class="view-btn" aria-label="Seznamski pogled (Tipka: L)"
+                            aria-pressed="false">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                height="16">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                            Seznam
+                        </button>
+                    </div>
+                </div>
+
+                <div class="controls-row-bottom">
+                    <div class="select-group category-group">
+                        <label class="select-label" id="categoryLabel" for="categorySelect">Kategorija:</label>
+                        <select id="categorySelect" aria-labelledby="categoryLabel"></select>
+                    </div>
+
+                    <div class="select-group sort-group">
+                        <label class="select-label" id="sortLabel" for="sortSelect">Razvrsti:</label>
+                        <select id="sortSelect" aria-labelledby="sortLabel">
+                            <option value="newest">Najnovejše</option>
+                            <option value="az">A-Ž</option>
+                            <option value="za">Ž-A</option>
+                        </select>
+                    </div>
+
+                    <button id="clearFiltersBtn" class="clear-btn" type="button">Ponastavi</button>
+                </div>
+            </div>
+
+            <div id="projectsContainer" class="archive-projects-container view-grid" role="region"
+                aria-label="Seznam projektov">
+            </div>
+
+            <div id="noResults" class="no-results hidden">
+                <p>Ni projektov, ki bi ustrezali vašemu iskanju.</p>
+            </div>
+        </div>
+
+        <!-- Kontakt in povezave -->
+        <section class="contact-section archive-contact-section">
+            <div class="contact-container">
+                <div class="email-hero">
+                    <div class="email-row">
+                        <button class="email-text interactive" type="button"
+                            aria-label="Kopiraj e-poštni naslov">miha.devstudio@gmail.com</button>
+                        <button class="copy-email-btn copy-email-archive-btn" aria-label="Kopiraj">
+                                <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                                </svg>
+                                <svg class="icon-check hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                                <span class="btn-text"></span>
+                            </button>
+                        </div>
+                        <span class="copy-tooltip">USPEŠNO KOPIRANO</span>
+                    </div>
+
+                    <div class="support-section">
+                        <p class="support-label">POVEZAVE</p>
+                        <div class="support-buttons">
+                            <a href="https://github.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                                class="support-btn support-btn-github" aria-label="GitHub profil">
+                                <span class="btn-content">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                                    </svg>
+                                    <span>GitHub</span>
+                                </span>
+                            </a>
+                            <a href="https://linkedin.com/in/mihaknific" target="_blank" rel="noopener noreferrer"
+                                class="support-btn support-btn-linkedin" aria-label="LinkedIn profil">
+                                <span class="btn-content">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path
+                                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                                    </svg>
+                                    <span>LinkedIn</span>
+                                </span>
+                            </a>
+                            <a href="podpora.html" class="support-btn support-btn-daruj" aria-label="Podpri moje delo z donacijo">
+                                <span class="btn-content">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path
+                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    </svg>
+                                    <span>Podpri</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-line-separator"></div>
+                <div class="footer-refined">
+                    <p>© 2026 MIHA KNIFIC</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Podpora in donacije -->
+    <section id="podpora-panel" class="horizontal-panel" aria-label="Podpri moje delo" role="region"
+        aria-hidden="true" inert>
+        <div class="podpora-container">
+            <a href="#contact" class="back-link close-panel-btn" data-target="contact" aria-label="Kontakt">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                <span class="back-link-text">Kontakt</span>
+            </a>
+
+            <header class="podpora-header">
+                <span class="podpora-header-tag">Brez oglasov · Odprtokodno · Za skupnost</span>
+                <h1>Podpri moje ustvarjanje</h1>
+                <p>
+                    Vsa svoja orodja, spletne aplikacije in vsebine ustvarjam z mislijo na odprtost, dostopnost in brezplačno
+                    uporabo. Če ti moji projekti lajšajo delo, prihranijo čas ali pomagajo pri učenju, lahko moj trud podpreš
+                    s poljubno donacijo.
+                </p>
+            </header>
+
+            <div class="podpora-methods">
+                <!-- 1. REVOLUT -->
+                <div class="method-card featured revolut-hero-card">
+                    <div class="revolut-left">
+                        <div class="card-top">
+                            <span class="card-badge badge-featured">Priporočeno · 0 % provizije</span>
+                            <div class="card-icon-wrap" aria-hidden="true">
+                                <svg viewBox="0 0 500 500" fill="currentColor">
+                                    <path d="M188.601 155.048H118.749V437.5H188.601V155.048Z"></path>
+                                    <path
+                                        d="M304.369 279.786C361.599 276.913 407.656 228.829 407.656 171.199C407.656 111.263 358.849 62.5 298.853 62.5H118.749V122.821H290.29C317.44 122.821 339.931 144.152 340.428 170.368C340.676 183.495 335.75 195.884 326.556 205.252C317.359 214.623 305.07 219.787 291.955 219.787H225.131C222.758 219.787 220.827 221.715 220.827 224.087V277.698C220.827 278.61 221.108 279.482 221.638 280.216L335.015 437.499H418.01L304.369 279.786Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h2 class="card-title">Revolut nakazilo</h2>
+                        <p class="card-desc">
+                            Najhitrejši način za podporo brez kakršnihkoli provizij. Z računom Revolut ali katerokoli
+                            bančno kartico (Apple Pay, Google Pay) brez potrebe po registraciji.
+                        </p>
+                        <div class="revolut-actions">
+                            <a href="https://revolut.me/mihaknific" target="_blank" rel="noopener noreferrer"
+                                class="card-cta-btn btn-revolut">
+                                <span>Podpri prek Revoluta</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"
+                                    height="18">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                            <span class="revolut-handle-pill">@mihaknific</span>
+                        </div>
+                    </div>
+
+                    <div class="revolut-right-qr">
+                        <div class="revolut-qr-frame">
+                            <div class="revolut-qr-box">
+                                <img src="assets/images/revolut-qr.svg" alt="Revolut QR koda za @mihaknific"
+                                    class="revolut-qr-image" width="135" height="135">
+                            </div>
+                            <div class="revolut-qr-note">
+                                <strong>Poskeniraj s telefonom</strong>
+                                <span>Odpre neposredno v Revolutu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. BANČNO NAKAZILO & UPN QR -->
+                <div class="method-card">
+                    <div class="card-top">
+                        <span class="card-badge badge-featured">SEPA · 0 % provizije</span>
+                    </div>
+                    <h3 class="card-title">Neposredno bančno nakazilo (SEPA / UPN)</h3>
+                    <p class="card-desc">
+                        Standardno bančno nakazilo prek spletne ali mobilne banke. Brez posrednikov in brez provizij.
+                    </p>
+
+                    <div class="two-col-grid">
+                        <div class="sepa-col">
+                            <div class="sepa-data-list">
+                                <div class="sepa-row">
+                                    <span class="sepa-label">Prejemnik</span>
+                                    <span class="sepa-value">Miha Knific</span>
+                                </div>
+                                <div class="sepa-row">
+                                    <span class="sepa-label">IBAN račun</span>
+                                    <span class="sepa-value" id="ibanValue">LT15 3250 0004 0812 2643</span>
+                                </div>
+                                <div class="sepa-row">
+                                    <span class="sepa-label">BIC / SWIFT</span>
+                                    <span class="sepa-value" id="bicValue">REVOS21BXXX</span>
+                                </div>
+                                <div class="sepa-row">
+                                    <span class="sepa-label">Namen</span>
+                                    <span class="sepa-value">Podpora projektom</span>
+                                </div>
+                                <div class="sepa-row">
+                                    <span class="sepa-label">Referenca / Sklic</span>
+                                    <span class="sepa-value">SI00</span>
+                                </div>
+                            </div>
+
+                            <button type="button" class="copy-pill-btn copy-btn" data-copy-target="#ibanValue"
+                                aria-label="Kopiraj IBAN številko">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"
+                                    height="14">
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                                </svg>
+                                <span>Kopiraj IBAN</span>
+                            </button>
+                        </div>
+
+                        <div class="upn-col">
+                            <div class="upn-amounts-row" role="group" aria-label="Hitri zneski za UPN kodo">
+                                <button type="button" class="amount-btn active" data-amount="5">5 €</button>
+                                <button type="button" class="amount-btn" data-amount="10">10 €</button>
+                                <button type="button" class="amount-btn" data-amount="20">20 €</button>
+                            </div>
+
+                            <div class="custom-amount-wrapper">
+                                <label for="customAmountInput" class="custom-amount-label">Poljuben znesek:</label>
+                                <div class="custom-amount-field">
+                                    <input type="number" id="customAmountInput" min="1" step="1"
+                                        placeholder="Znesek" aria-label="Poljuben znesek v evrih">
+                                    <span class="custom-currency">€</span>
+                                </div>
+                            </div>
+
+                            <div class="qr-display-box">
+                                <div id="upnQrContainer" class="qr-code-img" aria-label="UPN QR koda za slovenske mobilne banke"></div>
+                                <div class="qr-hint">
+                                    Poskeniraj z mobilno banko (Klik, mBank@net ipd.) za takojšnje vplačilo <strong
+                                        id="upnAmountDisplay">5 €</strong>.
+                                    <span class="qr-subhint">Standardna koda UPN QR z vnaprej vpisanimi podatki.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. PLATFORME -->
+                <div class="method-card">
+                    <div class="card-top">
+                        <span class="card-badge badge-fee">Alternativa · 5–12 % provizija</span>
+                    </div>
+                    <h3 class="card-title">Mednarodne platforme</h3>
+                    <p class="card-desc">
+                        Podpora prek uveljavljenih spletnih platform.
+                    </p>
+
+                    <div class="platforms-grid">
+                        <a href="https://ko-fi.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                            class="platform-card" aria-label="Ko-fi podpora">
+                            <div class="platform-icon" style="color: #fb7185;">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09s-2.618-2.39-3.882-3.874c-1.077-1.264-1.353-2.677-.732-3.805.656-1.192 2.213-1.464 3.328-.868 1.114.596 1.545 1.637 1.545 1.637s.457-1.054 1.572-1.637c1.114-.583 2.671-.311 3.328.881.608 1.115.342 2.518-.73 3.757zm7.652-1.89c-.313 1.656-1.745 2.05-3.376 2.072l.487-4.225c1.615.011 3.202.497 2.889 2.153z" />
+                                </svg>
+                            </div>
+                            <div class="platform-info">
+                                <h4>Ko-fi</h4>
+                                <p>Enkratna donacija · 0–5 % provizija</p>
+                            </div>
+                        </a>
+
+                        <a href="https://patreon.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                            class="platform-card" aria-label="Patreon podpora">
+                            <div class="platform-icon" style="color: #0ae448;">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M0 .48v23.04h4.22V.48zm15.385 0c-4.764 0-8.641 3.88-8.641 8.65 0 4.755 3.877 8.636 8.641 8.636 4.75 0 8.615-3.881 8.615-8.637 0-4.77-3.865-8.649-8.615-8.649z" />
+                                </svg>
+                            </div>
+                            <div class="platform-info">
+                                <h4>Patreon</h4>
+                                <p>Mesečna podpora · 8–12 % provizija</p>
+                            </div>
+                        </a>
+
+                        <a href="https://buymeacoffee.com/mihaknific" target="_blank" rel="noopener noreferrer"
+                            class="platform-card" aria-label="Buy Me a Coffee podpora">
+                            <div class="platform-icon" style="color: #ff8709;">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.216 6.415l-.132-.666c-.119-.597-.388-1.162-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.251-.987-.194-.4-.597-.634-.997-.789-.205-.079-.413-.141-.625-.195-1-.264-2.05-.36-3.08-.415-1.24-.068-2.48-.047-3.71.061-.92.083-1.88.185-2.76.502-.32.115-.65.257-.89.502-.3.3-.39.77-.18 1.15.15.27.42.45.69.58.36.17.74.29 1.12.37 1.08.23 2.2.33 3.31.37 1.22.05 2.45.01 3.67-.12.01 0 .02.01.03.01.12.08.13.25.13.38.01.21-.01.42-.03.63-.07.78-.17 1.55-.31 2.32-.08.43-.2 1.02.09 1.39.24.31.65.41 1.01.49.52.12 1.06.18 1.6.2.22.01.44 0 .66-.02.43-.05.86-.16 1.27-.33.36-.15.7-.35.98-.65.23-.25.37-.58.48-.91zm-7.68 4.67c-.86.37-1.84.79-3.11.79-.53 0-1.06-.07-1.57-.22l.88 9.04c.03.38.2.73.48.99.28.26.65.4 1.03.4h3.42c.38 0 .75-.14 1.03-.4.28-.26.45-.61.48-.99l.94-10.04c-.42.14-.85.24-1.33.24-.83 0-1.5-.28-2.26-.81z" />
+                                </svg>
+                            </div>
+                            <div class="platform-info">
+                                <h4>Buy Me a Coffee</h4>
+                                <p>Časti kavo · 5 % provizija</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="podpora-footer">
+                <p>© 2026 MIHA KNIFIC · Vse pravice pridržane</p>
+                <p>Iskrena hvala za vsako podporo in zaupanje!</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Toast obvestilo za kopiranje -->
+    <div id="toast" role="status" aria-live="polite">Kopirano v odložišče!</div>
+
+    <div id="custom-cursor" aria-hidden="true"></div>
+
+    <!-- Aplikacijska logika -->
+    <script src="assets/js/contact-module.js" defer></script>
+    <script src="assets/js/arhiv.js" defer></script>
+    <script src="assets/js/podpora.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/interactive-grid.js" defer></script>
+    <script src="assets/js/favicon-anim.js" defer></script>
+
+</body>
+
+</html>
