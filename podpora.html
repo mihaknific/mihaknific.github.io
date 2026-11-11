@@ -29,7 +29,28 @@
     <meta name="theme-color" content="#1a1a1a">
 
     <script>
-        window.location.replace("index.html" + (window.location.search || "") + "#podpora");
+        const referrer = document.referrer;
+        if (referrer) {
+            try {
+                const referrerUrl = new URL(referrer);
+                const currentUrl = new URL(window.location.href);
+                const normalizePath = (path) => path.replace(/\/+$/, "") || "/";
+                const portfolioPaths = new Set([
+                    normalizePath(new URL(".", currentUrl).pathname),
+                    normalizePath(new URL("index.html", currentUrl).pathname),
+                    normalizePath(new URL("arhiv.html", currentUrl).pathname)
+                ]);
+
+                if (
+                    referrerUrl.origin === currentUrl.origin &&
+                    portfolioPaths.has(normalizePath(referrerUrl.pathname))
+                ) {
+                    window.location.replace("index.html" + (window.location.search || "") + "#podpora");
+                }
+            } catch (error) {
+                console.error("Preverjanje izvora povezave za podporo ni uspelo:", error);
+            }
+        }
     </script>
 </head>
 

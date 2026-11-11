@@ -8,21 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const referrer = document.referrer;
         const currentOrigin = window.location.origin;
         let isInternalReferrer = false;
+        let isArchiveReferrer = false;
 
         try {
             if (referrer) {
                 const refUrl = new URL(referrer);
-                isInternalReferrer = (refUrl.origin === currentOrigin);
+                const normalizePath = (path) => path.replace(/\/+$/, '') || '/';
+                const archivePath = normalizePath(new URL('arhiv.html', window.location.href).pathname);
+                const portfolioPaths = new Set([
+                    normalizePath(new URL('.', window.location.href).pathname),
+                    normalizePath(new URL('index.html', window.location.href).pathname),
+                    archivePath
+                ]);
+                const referrerPath = normalizePath(refUrl.pathname);
+
+                isInternalReferrer = refUrl.origin === currentOrigin && portfolioPaths.has(referrerPath);
+                isArchiveReferrer = isInternalReferrer && referrerPath === archivePath;
             }
         } catch (e) {
-            isInternalReferrer = false;
+            console.error('Preverjanje povratne povezave ni uspelo:', e);
         }
 
-        if (referrer && referrer.includes('arhiv.html')) {
+        if (isArchiveReferrer) {
             backLink.href = 'arhiv.html';
             backLink.setAttribute('aria-label', 'Nazaj na arhiv projektov');
             if (backLinkText) backLinkText.textContent = 'Nazaj na arhiv';
-        } else if (referrer && (referrer.includes('index.html') || referrer === currentOrigin + '/')) {
+        } else if (isInternalReferrer) {
             backLink.href = 'index.html#contact';
             backLink.setAttribute('aria-label', 'Nazaj na kontaktno sekcijo');
             if (backLinkText) backLinkText.textContent = 'Nazaj na portfolio';
