@@ -138,13 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: "upn-qr-studio",
-            title: "UPN QR Studio",
-            description: "Ustvarjanje UPN QR in SEPA EPC plačilnih nalogov v obliki QR-kode ali PDF-ja.",
-            category: "Orodje",
-            tags: ["PLAČILA", "QR KODA", "PDF"],
+            title: "UPN QR API — testna stran",
+            description: "Samostojna testna stran ob projektu API; ne gosti niti kliče zalednega API-ja. Za celovitejše in bolj dodelano ustvarjanje plačilnih nalogov priporočam UPN Generator.",
+            category: "Testna stran",
+            tags: ["API", "TESTER", "PLAČILA", "QR KODA"],
             keywords: [
-                "upn qr studio", "upn qr api", "upn", "sepa", "epc", "plačilni nalog",
-                "qr koda", "pdf", "generator", "validacija"
+                "upn qr api", "api tester", "testna stran", "upn qr studio", "upn", "sepa", "epc",
+                "plačilni nalog", "qr koda", "pdf", "generator", "validacija", "upn generator"
             ],
             normalizedKeywords: null,
             link: "https://mihaknific.github.io/upn-qr-api/",

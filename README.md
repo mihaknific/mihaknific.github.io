@@ -33,5 +33,5 @@ Nato odprite `http://localhost:8000/`. Uporabite lahko tudi drug lokalni statič
 - **PRIPOVEDI** — interaktivne tekstovne zgodbe
 - **Finančna pot** — kalkulator finančne neodvisnosti
 - **Vmes** — Firefoxova razširitev za opomnike za odmore in časovne omejitve spletnih strani
-- **UPN QR Studio** — priprava UPN QR in SEPA EPC plačilnih nalogov
+- **UPN QR API — testna stran** — samostojni tester ob projektu API; GitHub Pages stran ne gosti in ne kliče zalednega API-ja. Za celovitejše ustvarjanje plačilnih nalogov je na voljo UPN Generator.
 - **Sanctissima Felis** — interaktivna spletna predstavitev Njene Vzvišene Brezbrižnosti
